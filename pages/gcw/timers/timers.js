@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 // Local
-import Header from 'components/Header'
+import Header from 'components/header'
 import Footer from 'components/Footer'
 
 // Styles

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Link from './common/link'
 
-export default function Header() {
+export default function Footer() {
     return (
         <footer>
 
