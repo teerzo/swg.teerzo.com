@@ -1,0 +1,35 @@
+
+
+
+.header {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+
+    left: 0px;
+    right: 0px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // justify-content: center;
+
+    // padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    background-color: #EEEEEE;
+    // border-bottom: 1px solid #333333;
+}
+
+.header h3 {
+    margin: 0px 10px 0px 10px;
+}
+
+
+.border {
+    border-left: 1px solid red;
+    width: 1px;
+    height: 20px;
+}
