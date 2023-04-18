@@ -21,12 +21,12 @@ import imgR1C3 from 'public/officer/marksmanship.gif';
 import imgR1C5 from 'public/officer/toughness.gif';
 import imgR1C7 from 'public/officer/endurance.gif';
 
-import imgR2C1 from 'public/officer/closeCombat.gif';
+import imgR2C1 from 'public/officer/closecombat.gif';
 import imgR2C3 from 'public/officer/sidearmaccuracy.gif';
-import imgR2C5 from 'public/officer/kineticDefense.gif';
-import imgR2C7 from 'public/officer/energyDefense.gif';
+import imgR2C5 from 'public/officer/kineticdefense.gif';
+import imgR2C7 from 'public/officer/energydefense.gif';
 
-import imgR3C1 from 'public/officer/closeCombat.gif';
+import imgR3C1 from 'public/officer/closecombat.gif';
 import imgR3C3 from 'public/officer/sidearmaccuracy.gif';
 
 import imgR4C1 from 'public/officer/decapitate.gif';
