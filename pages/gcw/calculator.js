@@ -5,12 +5,10 @@ import { useState, useEffect } from 'react';
 
 export default function GCW() {
 
-	// const date = new Date().toString();
+	const [date, setDate] = useState(new Date);
 
-	// console.log(d);
-
-	const [current, setCurrent] = useState({ rank: 0, percentage: null, gcw: null });
-	const [future, setFuture] = useState({ rank: 0, percentage: null });
+	const [current, setCurrent] = useState({ rank: 0, percentage: 0, gcw: 0 });
+	const [future, setFuture] = useState({ rank: 0, percentage: 0 });
 
 	const ranks = [
 		{ minRating: 0, maxRating: 4999, impTitle: "Private", rebTitle: "Private", combinedTitle: "Private", earnCap: 10000, decayBal: 0, maxDecay: 0, decayFloor: 0 },
@@ -27,13 +25,22 @@ export default function GCW() {
 		{ minRating: 55000, maxRating: 59999, impTitle: "General", rebTitle: "General", combinedTitle: "General", earnCap: 3750, decayBal: 2858, maxDecay: 2000, decayFloor: 0 }
 	]
 
-	// useEffect(() => {
+	useEffect(() => {
 
-	// }, []
+	}, []);
 
 	useEffect(() => {
 		calculateRank();
 	}, [current])
+
+
+	function updateDate() {
+		setDate();
+	}
+
+	function handleReset(event) {
+		setCurrent({ rank: 0, percentage: 0, gcw: 0 });
+	}
 
 	function handleRankChange(e) {
 		// console.log('handleRankChange', e?.target?.value, typeof e?.target?.value);
@@ -192,18 +199,24 @@ export default function GCW() {
 		<div className="container">
 			<Header />
 			<main className="gcw">
-				<h1> GCW Calculator </h1>
-
-
-				{/* <Reset /> */}
 
 				<div className="flex">
 
+					<div className="grow"></div>
 					<div className="current">
 						<div className="group">
-							<h3> This reset: </h3>
+							<h3> GCW: </h3>
 
 						</div>
+
+						<div className="group">
+							<label> Time till reset: </label>
+							<input readOnly={true} value={date.toUTCString()} />
+
+						</div>
+
+						<div className="grow"></div>
+
 
 						<div className="group">
 							<label> Current Rank: </label>
@@ -216,6 +229,7 @@ export default function GCW() {
 							</select>
 						</div>
 
+
 						<div className="group">
 							<label> Current %: </label>
 							<input max={99.99} value={current.percentage} onChange={handlePercentChange} />
@@ -226,61 +240,23 @@ export default function GCW() {
 							<input value={current.gcw} onChange={handleGCWChange} />
 						</div>
 
-						<p> Current: {current.rank} - {current.percentage} - {current.gcw} </p>
-						<p> Future: {future.rank} - {future.percentage} - {future.gcw} </p>
+						<div className="grow"></div>
+
+						<button onClick={handleReset}> RESET </button>
+
+						<div className="grow"></div>
+
 					</div>
-					<div className="divider"></div>
 
-					{/* <div className="future">
-
-						<div className="group">
-							<h3> Next reset: </h3>
-						</div>
-
-
-						<div className="group disabled">
-							<label> Future Rank: </label>
-							<select disabled value={future.rank} >
-								{ranks ? ranks.map((item, key) => {
-									return (
-										<option key={key} value={key}> {item?.combinedTitle} </option>
-									)
-								}) : <> </>}
-							</select>
-						</div>
-
-						<div className="group disabled">
-							<label> Future %: </label>
-							<input disabled value={future.percentage} />
-						</div>
-
-						<div className="group disabled">
-							<label> Future %: </label>
-							<input disabled value={future.percentage} />
-						</div>
-
-					</div> */}
 
 					<div className="future">
 						<div className="group">
-							<h3> Future ranks: </h3>
-
+							<h3> Ranks: </h3>
 						</div>
 						{ranks ? ranks.map((item, key) => {
-
-
-
 							return (
 								<div key={key} className="rank">
 									<p> {item.combinedTitle} </p>
-
-
-									{/* {future.rank > key ?
-										<div className="progress" style={{ 'width': `${future.percentage}%` }}> {future.rank >= key ? `${future.percentage} % ` : ''} </div>
-										:
-										<div className="progress" style={{ 'width': `0%` }}>  </div>
-									} */}
-
 									{future.rank > key ?
 										<div className="progress full" style={{ 'width': `100%` }}> 100% </div>
 										:
@@ -296,15 +272,11 @@ export default function GCW() {
 										:
 										<> </>
 									}
-
-
 								</div>
 							)
 						}) : <> </>}
-
 					</div>
 				</div>
-
 			</main >
 			<Footer />
 		</div >

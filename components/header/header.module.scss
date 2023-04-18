@@ -1,6 +1,3 @@
-
-
-
 .header {
     position: sticky;
     top: 0px;
@@ -19,17 +16,24 @@
     padding-left: 10px;
     padding-right: 10px;
 
-    background-color: #EEEEEE;
+    background-color: #eeeeee;
     // border-bottom: 1px solid #333333;
+
+    .grow {
+        flex-grow: 1;
+    }
 }
 
 .header h3 {
     margin: 0px 10px 0px 10px;
 }
 
-
 .border {
     border-left: 1px solid red;
     width: 1px;
     height: 20px;
+}
+
+.header label {
+    font-size: 10px;
 }

@@ -22,7 +22,7 @@ export default function GCW() {
 					</Link>
 					<Link href="/gcw/timers">
 						<PageButton type="big">
-							Invasion timers
+							PVP timers
 						</PageButton>
 					</Link>
 					<Link href="">
