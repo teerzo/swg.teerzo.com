@@ -35,7 +35,7 @@ import imgR4C3 from 'public/officer/overcharge.gif';
 import imgR4C5 from 'public/officer/synapticstimulator.gif';
 import imgR4C7 from 'public/officer/environmentalpurge.gif';
 
-import imgR5C1 from 'public/officer/cripplingVortex.gif';
+import imgR5C1 from 'public/officer/cripplingvortex.gif';
 import imgR5C3 from 'public/officer/calledshot.gif';
 import imgR5C5 from 'public/officer/bactaflush.gif';
 import imgR5C6 from 'public/officer/bactaflush.gif';
