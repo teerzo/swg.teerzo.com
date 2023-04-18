@@ -201,8 +201,6 @@ export default function GCW() {
 			<main className="gcw">
 
 				<div className="flex">
-
-					<div className="grow"></div>
 					<div className="current">
 						<div className="group">
 							<h3> GCW: </h3>
