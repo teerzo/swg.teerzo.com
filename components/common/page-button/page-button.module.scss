@@ -7,7 +7,6 @@ $highlight: #ffdf76;
     position: relative;
     z-index: 0;
 
-
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -26,12 +25,6 @@ $highlight: #ffdf76;
 
     background-color: #aaaaaa;
     border: 1px solid #aaaaaa;
-
-    @media (max-width: 900px) {
-        width: 150px;
-        height: 150px;
-        font-size: 14px;
-    }
 
     div {
         opacity: 0.8;
@@ -52,6 +45,22 @@ $highlight: #ffdf76;
     span {
         color: $highlight;
         font-size: 24px;
+    }
+    @media (max-width: 900px) {
+        width: 150px;
+        height: 150px;
+        // font-size: 14px;
+        span {
+            font-size: 20px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        width: 100px;
+        height: 100px;
+        span {
+            font-size: 14px;
+        }
     }
 }
 .button:hover {

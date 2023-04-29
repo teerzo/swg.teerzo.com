@@ -30,7 +30,7 @@ export default function Header() {
                 <h3> SWG Teerzo </h3>
             </Link>
 
-            {width < 700 ?
+            {width < 600 ?
                 <>
                     <div className="grow"> </div>
 
