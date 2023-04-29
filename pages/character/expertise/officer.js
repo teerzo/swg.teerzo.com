@@ -41,6 +41,11 @@ import imgR5C5 from 'public/officer/bactaflush.gif';
 import imgR5C6 from 'public/officer/bactaflush.gif';
 import imgR5C7 from 'public/officer/bactaflush.gif';
 
+import imgLeft from 'public/expertise/bg-expertise-left.png';
+import imgOfficer from 'public/expertise/bg-expertise-officer.png';
+import imgBM from 'public/expertise/bg-expertise-bm.png';
+import imgRight from 'public/expertise/bg-expertise-right.png';
+
 
 export default function Officer() {
 
@@ -138,7 +143,6 @@ export default function Officer() {
         <div className="container">
             <Header />
             <main className={styles.officer}>
-                <h1> Officer </h1>
 
                 <div className={styles.background}>
                     <div className={styles.tabs}>
@@ -148,7 +152,7 @@ export default function Officer() {
                     </div>
 
                     <div className={styles.panels}>
-                        <div className={`${styles.panel} ${tab === 'officer-1' ? styles.show : ''} `}>
+                        <div className={`${styles.panel} ${tab === 'officer-1' ? styles.show : ''} `} style={{  backgroundImage: `url(${imgLeft?.src})`}}>
                             <div className={styles.grid}>
 
                                 {officer1.map((item, key) => {
@@ -190,7 +194,7 @@ export default function Officer() {
                             </div>
 
                         </div>
-                        <div className={`${styles.panel} ${tab === 'officer-2' ? styles.show : ''} `}>
+                        <div className={`${styles.panel} ${tab === 'officer-2' ? styles.show : ''} `} style={{  backgroundImage: `url(${imgOfficer?.src})`}}>
 
                             <div className={styles.grid}>
                                 <SkillBox image={imgR1C1} row={1} col={1} name="Sturdiness" />
@@ -198,14 +202,14 @@ export default function Officer() {
                             </div>
 
                         </div>
-                        <div className={`${styles.panel} ${tab === 'officer-3' ? styles.show : ''} `}>
+                        <div className={`${styles.panel} ${tab === 'officer-3' ? styles.show : ''} `} style={{  backgroundImage: `url(${imgBM?.src})`}}>
 
                             <div className={styles.grid}>
                                 <SkillBox image={imgR1C1} row={1} col={1} name="Sturdiness" />
 
                             </div>
                         </div>
-                        <div className={styles.info}>
+                        <div className={styles.info} style={{  backgroundImage: `url(${imgRight?.src})`}}>
                             {selected ?
                                 <>
 

@@ -4,33 +4,23 @@ import Link from 'components/common/link';
 
 import PageButton from 'components/common/page-button';
 
-import { useState, useEffect } from 'react';
+// styles
+import styles from './character.module.scss';
+
+import imgExpertise from 'public/buttons/bg-expertise.png';
+import imgCharacters from 'public/buttons/bg-characters.png';
+import imgBuffs from 'public/buttons/bg-buffs.png';
 
 export default function Character() {
 
     return (
         <div className="container">
             <Header />
-            <main className="character">
-                <h1> Character </h1>
-
-                <div className="flex row">
-                    <Link href="/character/view">
-                        <PageButton disabled={true}>
-                            My Characters
-						</PageButton>
-                    </Link>
-                    <Link href="/character/expertise">
-                        <PageButton >
-                            Expertise Calculator
-						</PageButton>
-                    </Link>
-                    <Link href="">
-                        <PageButton disabled={true}>
-                            Buffs and Consumables
-						</PageButton>
-                    </Link>
-
+            <main className={styles.character}> 
+                <div className={styles.grid}>
+                    <PageButton href="/character/view" disabled={true} image={imgCharacters}> My Characters </PageButton>
+                    <PageButton href="/character/expertise" disabled={false} image={imgExpertise}> Expertise Calculator </PageButton>
+                    <PageButton href="/character/buffs" disabled={true} image={imgCharacters}> Buffs and Consumables </PageButton>
                 </div>
             </main >
             <Footer />

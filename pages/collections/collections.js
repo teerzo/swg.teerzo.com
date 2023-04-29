@@ -22,7 +22,7 @@ export default function Collections() {
                             Badges
 						</PageButton>
                     </Link>
-                    <Link href="/gcw/timers">
+                    <Link href="/pvp/timers">
                         <PageButton disabled={true}>
                             Space?
 						</PageButton>

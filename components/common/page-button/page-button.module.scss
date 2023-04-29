@@ -1,24 +1,80 @@
+$primary: #284143;
+$darker: #1a2b2c;
+$select: #227075;
+$highlight: #ffdf76;
+
 .button {
+    position: relative;
+    z-index: 0;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    cursor: pointer;
 
     width: 200px;
     height: 200px;
 
-    font-size: 20px;
+    color: #ffffff;
+    text-shadow: 1px 1px #333333;
 
-    margin: 5px;
+    margin: 0px;
     padding: 10px;
-  
-    background-color: #ffffff;
-    border: 1px solid #AAAAAA;
+
+    background-color: #aaaaaa;
+    border: 1px solid #aaaaaa;
+
+    @media (max-width: 900px) {
+        width: 150px;
+        height: 150px;
+        font-size: 14px;
+    }
+
+    div {
+        opacity: 0.8;
+
+        position: absolute;
+        z-index: -1;
+
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+
+        background-position: center;
+        // background-size: ;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    span {
+        color: $highlight;
+        font-size: 24px;
+    }
 }
 .button:hover {
-    background-color: #EEEEEE;
+    background-color: $select;
+    border: 1px solid $select;
+
+    div {
+        opacity: 1;
+    }
 }
-.disabled { 
-    color: #333333;
-    background-color: #AAAAAA;
-    opacity: 0.5;
+.disabled {
+    cursor: not-allowed;
+    // color: #333333;
+    background-color: #aaaaaa;
+    // opacity: 0.5;
+    div {
+        opacity: 0.8;
+    }
 }
 .disabled:hover {
-    background-color: #AAAAAA;
+    background-color: #aaaaaa;
+    border: 1px solid #aaaaaa;
+    div {
+        opacity: 0.8 !important;
+    }
 }

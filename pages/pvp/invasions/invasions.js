@@ -6,7 +6,7 @@ import Header from 'components/header'
 import Footer from 'components/Footer'
 
 // Styles
-import styles from './timers.module.scss';
+import styles from './invasions.module.scss';
 
 // Images
 import imgKeren from 'public/keren.png';
@@ -16,7 +16,7 @@ import imgSpace from 'public/space.png';
 import Toggle from 'components/common/toggle';
 
 
-export default function GCWTimers({ ...props }) {
+export default function Invasions({ ...props }) {
 
 	const [displayUTC, setUTC] = useState('');
 	const [displayLocal, setLocal] = useState('');
@@ -183,16 +183,13 @@ export default function GCWTimers({ ...props }) {
 		setFlashpoint(flash);
 	}
 
-
-
-
 	return (
 
 		<div className="container">
 
 			<Header />
 			<main className={styles.main}>
-				<div className={styles.timers}>
+				<div className={styles.invasions}>
 					<p> {displayUTC ? displayUTC : '---, -- --- ---- --:--:-- ---'}</p>
 
 					<h1> Flashpoint </h1>

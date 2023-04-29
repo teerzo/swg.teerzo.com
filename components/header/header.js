@@ -34,38 +34,29 @@ export default function Header() {
                 <>
                     <div className="grow"> </div>
 
-                    <div onClick={toggleOverlay} className="hamburger"> ||| </div>
-                    <div className={`${styles.overlay} ${overlay ? styles['show'] : styles['hide']} `}>
-                        <div className={styles['flex']}>
-                            <Link href="/character">
-                                <NavButton> Character </NavButton>
-                            </Link>
-                            <Link href="/gcw">
-                                <NavButton> GCW </NavButton>
-                            </Link>
-                            <Link href="/collections">
-                                <NavButton> Collections </NavButton>
-                            </Link>
-                            <Link href="/space" disabled={true}>
-                                <NavButton> Space </NavButton>
-                            </Link>
+                    <div onClick={toggleOverlay} className={styles.menu}> ||| </div>
+                    <div className={styles.parent}>
+                        <div className={`${styles.overlay} ${overlay ? styles['show'] : styles['hide']} `}>
+                            <div className={styles['flex']}>
+
+                                <NavButton href="/character"> Character </NavButton>
+                                <NavButton href="/pvp"> PvP </NavButton>
+                                <NavButton href="/pve" disabled={true}> PvE </NavButton>
+                                <NavButton href="/collections" disabled={true}> Collections </NavButton>
+                                <NavButton href="/space" disabled={true}> Space </NavButton>
+
+                            </div>
                         </div>
                     </div>
                 </>
                 :
                 <>
-                    <Link href="/character">
-                        <NavButton> Character </NavButton>
-                    </Link>
-                    <Link href="/gcw">
-                        <NavButton> GCW </NavButton>
-                    </Link>
-                    <Link href="/collections">
-                        <NavButton> Collections </NavButton>
-                    </Link>
-                    <Link href="/space" disabled={true}>
-                        <NavButton> Space </NavButton>
-                    </Link>
+
+                    <NavButton href="/character"> Character </NavButton>
+                    <NavButton href="/pvp"> PvP </NavButton>
+                    <NavButton href="/pve" disabled={true}> PvE </NavButton>
+                    <NavButton href="/collections" disabled={true}> Collections </NavButton>
+                    <NavButton href="/space" disabled={true}> Space </NavButton>
 
                     <div className="grow"> </div>
 
@@ -75,7 +66,6 @@ export default function Header() {
                             <option> Legends </option>
                         </select>
                     </div> */}
-
                 </>
             }
 

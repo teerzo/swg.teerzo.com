@@ -14,6 +14,7 @@ export default function Link({ children, href, disabled}) {
                 // but this example shows how you can also access the router
                 // and use it manually
                 if( !disabled) {
+                    console.log('link', disabled, href);
                     router.push(href)
                 }
             }}
