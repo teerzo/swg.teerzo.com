@@ -29,45 +29,48 @@ export default function Header() {
             <Link href="/">
                 <h3> SWG Teerzo </h3>
             </Link>
+            {width ?
+                width < 600 ?
+                    <>
+                        <div className="grow"> </div>
 
-            {width < 600 ?
-                <>
-                    <div className="grow"> </div>
+                        <div onClick={toggleOverlay} className={styles.menu}> ||| </div>
+                        <div className={styles.parent}>
+                            <div className={`${styles.overlay} ${overlay ? styles['show'] : styles['hide']} `}>
+                                <div className={styles['flex']}>
 
-                    <div onClick={toggleOverlay} className={styles.menu}> ||| </div>
-                    <div className={styles.parent}>
-                        <div className={`${styles.overlay} ${overlay ? styles['show'] : styles['hide']} `}>
-                            <div className={styles['flex']}>
+                                    <NavButton href="/character"> Character </NavButton>
+                                    <NavButton href="/pvp"> PvP </NavButton>
+                                    <NavButton href="/pve" disabled={true}> PvE </NavButton>
+                                    <NavButton href="/collections" disabled={true}> Collections </NavButton>
+                                    <NavButton href="/space" disabled={true}> Space </NavButton>
 
-                                <NavButton href="/character"> Character </NavButton>
-                                <NavButton href="/pvp"> PvP </NavButton>
-                                <NavButton href="/pve" disabled={true}> PvE </NavButton>
-                                <NavButton href="/collections" disabled={true}> Collections </NavButton>
-                                <NavButton href="/space" disabled={true}> Space </NavButton>
-
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </>
-                :
-                <>
+                    </>
+                    :
+                    <>
 
-                    <NavButton href="/character"> Character </NavButton>
-                    <NavButton href="/pvp"> PvP </NavButton>
-                    <NavButton href="/pve" disabled={true}> PvE </NavButton>
-                    <NavButton href="/collections" disabled={true}> Collections </NavButton>
-                    <NavButton href="/space" disabled={true}> Space </NavButton>
+                        <NavButton href="/character"> Character </NavButton>
+                        <NavButton href="/pvp"> PvP </NavButton>
+                        <NavButton href="/pve" disabled={true}> PvE </NavButton>
+                        <NavButton href="/collections" disabled={true}> Collections </NavButton>
+                        <NavButton href="/space" disabled={true}> Space </NavButton>
 
-                    <div className="grow"> </div>
+                        <div className="grow"> </div>
 
-                    {/* <div className="flex-col margin-right">
+                        {/* <div className="flex-col margin-right">
                         <label> Server: </label>
                         <select>
                             <option> Legends </option>
                         </select>
                     </div> */}
-                </>
+                    </>
+                :
+                null
             }
+
 
 
         </div>
