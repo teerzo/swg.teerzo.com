@@ -1,0 +1,105 @@
+.calculator {
+    // background-color: #ff0000;
+
+    .flex {
+        display: flex;
+        flex-direction: row;
+
+        position: relative;
+
+        display: flex;
+        flex-direction: row;
+        // align-items: flex-start;
+        justify-content: center;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+        // width: 300px;
+    }
+
+    .current {
+        width: 300px;
+        margin-right: 5px;
+
+        display: flex;
+        flex-direction: column;
+
+        button {
+            text-align: center;
+            width: 100%;
+            max-width: 100px;
+            margin: 0px auto;
+        }
+
+
+        .group {
+            border: 1px solid red;
+        }
+    }
+    .future {
+        width: 300px;
+
+        margin-left: 5px;
+
+        .rank {
+            font-size: 14px;
+            // border: 1px solid red;
+            // padding: 5px;
+            p {
+                margin: 0px;
+            }
+            .progress {
+                background-color: #aaaaaa;
+                padding: 2px;
+                text-align: right;
+                &.full {
+                    opacity: 1;
+                }
+                &.rank {
+                    // color:
+                    background-color: red;
+                }
+                &.none {
+                    opacity: 0.2;
+                }
+            }
+        }
+    }
+    .divider {
+        flex-grow: 1;
+        height: 100%;
+        width: 1px;
+        border-left: 1px solid red;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .group {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input,
+        select {
+            border: 1px solid #333;
+            border-radius: 3px;
+            height: 40px;
+            width: 100%;
+            padding: 5px;
+        }
+        &.disabled {
+            // label,
+            input,
+            select {
+                opacity: 0.5;
+            }
+        }
+    }
+    span {
+        font-size: 11px;
+        // font-family: Verdana;
+        color: #fff;
+    }
+}

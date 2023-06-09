@@ -3,6 +3,8 @@ import Footer from 'components/Footer'
 
 import { useState, useEffect } from 'react';
 
+import styles from './calculator.module.scss';
+
 export default function GCW() {
 
 	const [date, setDate] = useState(new Date);
@@ -198,10 +200,10 @@ export default function GCW() {
 	return (
 		<div className="container">
 			<Header />
-			<main className="gcw">
+			<main className={styles.calculator}>
 
-				<div className="flex">
-					<div className="current">
+				<div className={styles['flex']}>
+					<div className={styles['current']}>
 						<div className="group">
 							<h3> GCW: </h3>
 
@@ -246,17 +248,16 @@ export default function GCW() {
 
 					</div>
 
-
-					<div className="future">
-						<div className="group">
+					<div className={styles['future']}>
+						<div className={styles['group']}>
 							<h3> Ranks: </h3>
 						</div>
 						{ranks ? ranks.map((item, key) => {
 							return (
-								<div key={key} className="rank">
+								<div key={key} className={styles['rank']}>
 									<p> {item.combinedTitle} </p>
 									{future.rank > key ?
-										<div className="progress full" style={{ 'width': `100%` }}> 100% </div>
+										<div className={styles['progress', 'full']} style={{ 'width': `100%` }}> 100% </div>
 										:
 										<> </>
 									}
