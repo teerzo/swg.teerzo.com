@@ -309,9 +309,9 @@ export default function Page() {
     const imperialClass = cx('btn', 'imperial', 'text-xl', selected.faction === 'imperial' ? 'selected' : '')
 
     return (
-        <div className="w-full p-5 mt-20">
+        <div className="w-full p-5 ">
             <div className="flex flex-row justify-center mb-5">
-                <div className="flex flex-col prose">
+                <div className="flex flex-col prose w-full">
                     <h3 className="">  GCW Week ends in: </h3>
                     <div className="flex gap-5">
                         <div>
@@ -344,7 +344,7 @@ export default function Page() {
                 </div>
             </div>
             <div className="flex flex-row justify-center">
-                <div className="flex flex-col prose">
+                <div className="flex flex-col prose w-full">
                     <h3 className=""> Current: </h3>
 
                     <div className="flex flex-row">
