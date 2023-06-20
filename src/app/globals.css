@@ -6,39 +6,124 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --my-color: #fff;
+}
+[data-theme="rebel"] {
+  --my-color: #ff0000;
+}
+[data-theme="imperial"] {
+  --my-color: #0000ff;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+
+    --my-color: #00FF00;
   }
-}
+} */
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
-.main {
-  /* border: 1px solid red; */
+/* body {
+  background-color: var(--my-color);
+} */
 
+.main {
   position: fixed;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
+  padding: 0px;
+  overflow: auto;
 }
 
 .container {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   padding: 10px;
-
   margin: 0 auto;
+}
+
+.theme-btn {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.theme-btn svg {
+  font-size: 20px;
+}
+.theme-btn.selected {
+  /* background-color:#AAAAAA; */
+  /* border-color: #AAAAAA; */
+}
+/* .theme-btn.selected svg{
+  color:#BC1E22;
+} */
+
+/* .icon-rebel:hover {
+  color: #BC1E22;
+}
+
+.icon-imperial:hover {
+  color: #1244e9;
+}
+
+.icon-system:hover {
+  color: #000000;
+} */
+
+.theme-btn-rebel.selected {
+}
+/* .theme-btn-rebel.selected .icon {
+  color: #BC1E22;
+} */
+.theme-btn-rebel .icon:hover {
+  color: #bc1e22;
+}
+
+.theme-btn-imperial.selected {
+}
+/* .theme-btn-imperial.selected .icon {
+  color: #1244e9;
+} */
+.theme-btn-imperial .icon:hover {
+  color: #1244e9;
+}
+
+.btn.rebel.selected {
+  color: #bc1e22;
+}
+.btn.imperial.selected {
+  color: #1244e9;
+}
+
+.disabled {
+  opacity: 0.25;
+}
+
+.bg-black {
+  /* background-color: --dark;  */
+
+  /* --tw-border-opacity: 1; */
+  /* border-color: hsl(var(--tw-border-black)); */
+  /* --tw-bg-opacity: 1; */
+  /* background-color: hsl(var(--tw-bg-black)); */
+
+  border-color: #0f1215;
+  background-color: #0f1215;
+}
+
+.bg-black:hover {
+  border-color: #000000;
+  /* background-color: #000000; */
+}
+
+.bg-black:focus {
+  /* outline-color: #000000;; */
 }

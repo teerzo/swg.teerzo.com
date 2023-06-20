@@ -1,3 +1,3 @@
 export default function Page() {
-    return <h1>GCW CONTENT</h1>
+    return <h1>Pve Content</h1>
 }
