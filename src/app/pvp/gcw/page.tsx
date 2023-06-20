@@ -316,25 +316,25 @@ export default function Page() {
                     <div className="flex gap-5">
                         <div>
                             <span className="countdown font-mono text-4xl">
-                                <span style={{ "--value": remaining.days }}> </span>
+                                <span style={{ "--value": remaining.days } as React.CSSProperties }> </span>
                             </span>
                             days
                         </div>
                         <div>
                             <span className="countdown font-mono text-4xl">
-                                <span style={{ "--value": remaining.hours }}></span>
+                                <span style={{ "--value": remaining.hours } as React.CSSProperties }> </span>
                             </span>
                             hours
                         </div>
                         <div>
                             <span className="countdown font-mono text-4xl">
-                                <span style={{ "--value": remaining.minutes }}></span>
+                                <span style={{ "--value": remaining.minutes } as React.CSSProperties }> </span>
                             </span>
                             min
                         </div>
                         <div>
                             <span className="countdown font-mono text-4xl">
-                                <span style={{ "--value": remaining.seconds }}></span>
+                                <span style={{ "--value": remaining.seconds } as React.CSSProperties }> </span>
                             </span>
                             sec
                         </div>

@@ -8,6 +8,7 @@
   --background-end-rgb: 255, 255, 255;
 
   --my-color: #fff;
+  --value: 0;
 }
 [data-theme="rebel"] {
   --my-color: #ff0000;
