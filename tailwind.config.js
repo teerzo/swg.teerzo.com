@@ -11,8 +11,6 @@ module.exports = {
   ],
   daisyui: {
     themes: [
-      "light",
-      "dark",
       {
         imperial: {
           "primary": "#b5babd",
@@ -46,6 +44,5 @@ module.exports = {
     darkMode: ["class", '[data-theme="imperial"]'],
     base: true,
     utils: true,
-
   },
 }
