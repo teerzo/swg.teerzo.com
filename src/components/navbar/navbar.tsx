@@ -50,7 +50,14 @@ export default function Navbar() {
                             </ul>
                         </li>
                         {/* <li><a>Item 3</a></li> */}
+
+                        <li>
+                            <span>
+                                <ThemeButtons theme={theme} handleThemeChange={handleThemeChange} />
+                            </span>
+                        </li>
                     </ul>
+
                 </div>
                 <div className="btn btn-ghost text-lg">
                     {theme === 'rebel' ?
@@ -104,7 +111,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <div className="navbar-end">
+            <div className="navbar-end hidden lg:flex">
                 {/* <a className="btn mr-2">Button</a> */}
 
                 <div className="dropdown dropdown-end mr-2">
@@ -129,6 +136,29 @@ export default function Navbar() {
                 <ThemeButtons theme={theme} handleThemeChange={handleThemeChange} />
 
             </div>
+            <div className="navbar-end lg:hidden">
+                <div className="dropdown dropdown-end mr-2">
+                    <label tabIndex={0} className="btn btn-circle avatar">
+                        <div className="w-10 rounded-full icon">
+                            <FaUserAlt />
+                            {/* <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" /> */}
+                        </div>
+                    </label>
+                    <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                        <li>
+                            <a className="justify-between">
+                                Profile
+                                <span className="badge">New</span>
+                            </a>
+                        </li>
+                        <li><a>Settings</a></li>
+                        <li><a>Logout</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+
         </div>
 
     )

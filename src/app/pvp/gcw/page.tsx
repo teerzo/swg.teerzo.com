@@ -254,7 +254,7 @@ export default function Page() {
             var newRating = selectedRating + finalRatingAdjustment;
             console.log("new rating " + newRating);
 
-            var newRatingTitle =  Math.round(newRating / 5000);
+            var newRatingTitle = Math.round(newRating / 5000);
             console.log("new r title " + ranks[newRatingTitle].nameImp);
 
             var newselectedRatingPercent = 0;
@@ -295,7 +295,7 @@ export default function Page() {
             let _future = { ...future };
 
             _future.rank = selected.rank; // ranks[newRatingTitle].combinedTitle + upOrDown;
-            _future.percentage = selected.percentage ? selected.percentage.toString(): '';
+            _future.percentage = selected.percentage ? selected.percentage.toString() : '';
 
 
             console.log('setFuture', _future);
@@ -309,32 +309,32 @@ export default function Page() {
     const imperialClass = cx('btn', 'imperial', 'text-xl', selected.faction === 'imperial' ? 'selected' : '')
 
     return (
-        <div className="w-full p-5 ">
-            <div className="flex flex-row justify-center mb-5">
-                <div className="flex flex-col prose w-full">
+        <div className="w-full">
+            <div className="flex flex-row justify-center text-center mb-5">
+                <div className="flex flex-col prose w-full items-center	 text-center">
                     <h3 className="">  GCW Week ends in: </h3>
                     <div className="flex gap-5">
                         <div>
                             <span className="countdown font-mono text-4xl">
-                                <span style={{ "--value": remaining.days } as React.CSSProperties }> </span>
+                                <span style={{ "--value": remaining.days } as React.CSSProperties}> </span>
                             </span>
                             days
                         </div>
                         <div>
                             <span className="countdown font-mono text-4xl">
-                                <span style={{ "--value": remaining.hours } as React.CSSProperties }> </span>
+                                <span style={{ "--value": remaining.hours } as React.CSSProperties}> </span>
                             </span>
                             hours
                         </div>
                         <div>
                             <span className="countdown font-mono text-4xl">
-                                <span style={{ "--value": remaining.minutes } as React.CSSProperties }> </span>
+                                <span style={{ "--value": remaining.minutes } as React.CSSProperties}> </span>
                             </span>
                             min
                         </div>
                         <div>
                             <span className="countdown font-mono text-4xl">
-                                <span style={{ "--value": remaining.seconds } as React.CSSProperties }> </span>
+                                <span style={{ "--value": remaining.seconds } as React.CSSProperties}> </span>
                             </span>
                             sec
                         </div>
@@ -455,17 +455,11 @@ export default function Page() {
                                                 className="m-0"
                                             />
 
-                                            <label className="grow label pl-5 " >
-                                                {selected.rank >= item.id ?
-                                                    <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
-                                                    :
-                                                    <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
-                                                }
+                                            <label className="min-w-140 grow label pl-2" >
+                                                <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
                                             </label>
-
-
-                                            <p className="mr-5 text-sm"> 100%</p>
-                                            <progress className="progress progress-primary w-56 progress-secondary" value={100} max="100"></progress>
+                                            <span className="text-right	text-sm min-w-40 mr-2"> 100%</span>
+                                            <progress className="progress progress-primary progress-secondary" value={100} max="100"></progress>
                                         </>
                                         : <> </>
                                     }
@@ -481,15 +475,12 @@ export default function Page() {
                                                 className="m-0"
                                             />
 
-                                            <label className="grow label pl-5 " >
-                                                {selected.rank >= item.id ?
-                                                    <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
-                                                    :
-                                                    <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
-                                                }
+
+                                            <label className="min-w-140 grow label pl-2" >
+                                                <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
                                             </label>
-                                            <p className="mr-5 text-sm"> {future.percentage}%</p>
-                                            <progress className="progress progress-primary w-56 progress-secondary" value={future.percentage} max="100"></progress>
+                                            <span className="text-right	text-sm min-w-40 mr-2"> {future.percentage}%</span>
+                                            <progress className="progress progress-primary progress-secondary" value={future.percentage} max="100"></progress>
                                         </>
                                         : <> </>
                                     }
@@ -505,16 +496,19 @@ export default function Page() {
                                                 placeholder="blur"
                                                 className="m-0 disabled"
                                             />
-
+                                            <label className="min-w-140 grow label pl-2 disabled" >
+                                                <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
+                                            </label>
+{/* 
                                             <label className="grow label pl-5 disabled" >
                                                 {selected.rank >= item.id ?
                                                     <span className="label-text text-secondary "> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
                                                     :
                                                     <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
                                                 }
-                                            </label>
-                                            <p className="mr-5 text-sm"> 0%</p>
-                                            <progress className="progress progress-primary w-56" value={0} max="100"></progress>
+                                            </label> */}
+                                            <span className="text-right	text-sm min-w-40 mr-2"> 0%</span>
+                                            <progress className="progress progress-primary " value={0} max="100"></progress>
                                         </>
                                         : <> </>
                                     }
