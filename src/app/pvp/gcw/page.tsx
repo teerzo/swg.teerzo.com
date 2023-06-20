@@ -384,13 +384,13 @@ export default function Page() {
                             <label className="label">
                                 <span className="label-text"> Points </span>
                             </label>
-                            <input type="number" placeholder="0" min={0} className="input input-bordered bg-black max-w-xs" onChange={handlePointsChange} />
+                            <input type="number" placeholder="0" min={0} className="input input-bordered bg-black w-full max-w-xs" onChange={handlePointsChange} />
                         </div>
                         <div className="form-control max-w-xs w-full">
                             <label className="label">
                                 <span className="label-text"> Rank %  </span>
                             </label>
-                            <input type="text" placeholder="0 - 99%" value={selected.percentage} max={99} className="input input-bordered bg-black max-w-xs" onChange={handlePercentageChange} />
+                            <input type="text" placeholder="0 - 99%" value={selected.percentage} max={99} className="input input-bordered bg-black w-full max-w-xs" onChange={handlePercentageChange} />
                         </div>
                     </div>
 
