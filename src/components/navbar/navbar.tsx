@@ -1,27 +1,19 @@
 
-"use client"
+// "use client"
 
 import { useEffect, useState } from 'react';
 import ThemeButtons from '../themebuttons/themebuttons';
 import { FaRebel, FaEmpire, FaUserAlt, FaSkullCrossbones, FaSpider, FaUserAstronaut } from "react-icons/fa";
 import Link from "next/link";
+import { useTheme } from '../../theme-provider';
 
-import useTheme from '../../hooks/useTheme';
+type Themes = "rebel" | "light" | "imperial" | "dark";
 
 export default function Navbar() {
-
-    const [theme, setTheme] = useTheme();
-
-    useEffect(() => {
-        console.log('navbar', theme);
-    }, [theme])
-
-    const handleThemeChange = (arg: string): void => {
-        setTheme(arg);
-    }
+    const { theme, setTheme } = useTheme();
 
     return (
-        <div className="navbar bg-base-100 shadow-xl sticky top-0 z-50">
+        <div className="navbar bg-base-100 shadow-md sticky top-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -29,52 +21,52 @@ export default function Navbar() {
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-primary">
                         <li>
-                            <a className="disabled"> Character</a>
-                            <ul className="p-2">
-                                {/* <li><a>Submenu 1</a></li> */}
-                                {/* <li><a>Submenu 2</a></li> */}
-                            </ul>
+                            <Link href="/tools"> Tools </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <a>PvP</a>
                             <ul className="p-2">
                                 <li> <Link href="/pvp/timers" > Invasion Timers </Link> </li>
                                 <li> <Link href="/pvp/gcw" > GCW Calculator </Link> </li>
                             </ul>
-                        </li>
-                        <li>
+                        </li> */}
+                        {/* <li>
                             <a className="disabled">PvE</a>
                             <ul className="p-2">
-                                {/* <li><a>Submenu 1</a></li> */}
-                                {/* <li><a>Submenu 2</a></li> */}
                             </ul>
-                        </li>
-                        {/* <li><a>Item 3</a></li> */}
+                        </li> */}
 
                         <li>
                             <span>
-                                <ThemeButtons theme={theme} handleThemeChange={handleThemeChange} />
+                                <ThemeButtons />
                             </span>
                         </li>
                     </ul>
 
                 </div>
                 <div className="btn btn-ghost text-lg">
-                    {theme === 'rebel' ?
+                    {theme === 'rebel' || theme === 'light' ?
                         <FaRebel className="text-3xl text-secondary icon" />
                         : <> </>
                     }
-                    {theme === 'imperial' ?
+                    {theme === 'imperial' || theme === 'dark' ?
                         <FaEmpire className="text-3xl text-secondary icon" />
                         : <> </>
                     }
                     <Link href="/" className="text-primary"> SWG Tools</Link>
                 </div>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center invisible lg:visible lg:flex">
 
+                <div className="btn m-1">
+                    <Link href="/tools"> Tools </Link>
+                </div>
 
-                <div className="dropdown">
+                {/* <div className="btn m-1">
+                    <Link href="/characters"> Characters? </Link>
+                </div> */}
+
+                {/* <div className="dropdown">
                     <label tabIndex={0} className="btn m-1"> <FaUserAstronaut className="h-5 w-5" /> Character  </label>
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-primary">
                         <li>
@@ -84,9 +76,9 @@ export default function Navbar() {
                             <Link href="/character/buff" className="disabled" > Buffs & Consumables </Link>
                         </li>
                     </ul>
-                </div>
+                </div> */}
 
-                <div className="dropdown">
+                {/* <div className="dropdown">
                     <label tabIndex={0} className="btn m-1"> <FaSkullCrossbones className="h-5 w-5" /> PvP  </label>
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-primary">
                         <li>
@@ -96,9 +88,9 @@ export default function Navbar() {
                             <Link href="/pvp/gcw" className="" > Gcw Calculator </Link>
                         </li>
                     </ul>
-                </div>
+                </div> */}
 
-                <div className="dropdown " >
+                {/* <div className="dropdown " >
                     <label tabIndex={0} className="btn m-1 disabled:opacity-75"> <FaSpider className="h-5 w-5" /> PvE  </label>
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-primary">
                         <li>
@@ -108,7 +100,7 @@ export default function Navbar() {
                             <Link href="/pve" className="disabled" > Heroic map </Link>
                         </li>
                     </ul>
-                </div>
+                </div> */}
             </div>
 
             <div className="navbar-end hidden lg:flex">
@@ -133,7 +125,7 @@ export default function Navbar() {
                     </ul>
                 </div>
 
-                <ThemeButtons theme={theme} handleThemeChange={handleThemeChange} />
+                <ThemeButtons />
 
             </div>
             <div className="navbar-end lg:hidden">

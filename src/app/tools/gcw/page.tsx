@@ -384,13 +384,13 @@ export default function Page() {
                             <label className="label">
                                 <span className="label-text"> Points </span>
                             </label>
-                            <input type="number" placeholder="0" min={0} className="input input-bordered bg-black w-full max-w-xs" onChange={handlePointsChange} />
+                            <input type="number" placeholder="0" min={0} className="input input-bordered w-full max-w-xs" onChange={handlePointsChange} />
                         </div>
                         <div className="form-control max-w-xs w-full">
                             <label className="label">
                                 <span className="label-text"> Rank %  </span>
                             </label>
-                            <input type="text" placeholder="0 - 99%" value={selected.percentage} max={99} className="input input-bordered bg-black w-full max-w-xs" onChange={handlePercentageChange} />
+                            <input type="text" placeholder="0 - 99%" value={selected.percentage} max={99} className="input input-bordered w-full max-w-xs" onChange={handlePercentageChange} />
                         </div>
                     </div>
 
@@ -459,7 +459,7 @@ export default function Page() {
                                                 <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
                                             </label>
                                             <span className="text-right	text-sm min-w-40 mr-2"> 100%</span>
-                                            <progress className="progress progress-primary progress-secondary" value={100} max="100"></progress>
+                                            <progress className={`progress progress-secondary ${selected.faction === 'imperial' ? 'progress-imperial' : 'progress-rebel'}`} value={100} max="100"></progress>
                                         </>
                                         : <> </>
                                     }
@@ -480,7 +480,7 @@ export default function Page() {
                                                 <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
                                             </label>
                                             <span className="text-right	text-sm min-w-40 mr-2"> {future.percentage}%</span>
-                                            <progress className="progress progress-primary progress-secondary" value={future.percentage} max="100"></progress>
+                                            <progress className={`progress progress-secondary ${selected.faction === 'imperial' ? 'progress-imperial' : 'progress-rebel'}`} value={future.percentage} max="100"></progress>
                                         </>
                                         : <> </>
                                     }
@@ -508,7 +508,7 @@ export default function Page() {
                                                 }
                                             </label> */}
                                             <span className="text-right	text-sm min-w-40 mr-2"> 0%</span>
-                                            <progress className="progress progress-primary " value={0} max="100"></progress>
+                                            <progress className="progress progress-secondary" value={0} max="100"></progress>
                                         </>
                                         : <> </>
                                     }

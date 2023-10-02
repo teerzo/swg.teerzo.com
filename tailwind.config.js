@@ -10,15 +10,21 @@ module.exports = {
     require("daisyui")
   ],
   daisyui: {
+    daisyui: {
+      themes: ["light", "dark"],
+    },
     themes: [
       {
-        imperial: {
+        dark: {
           "primary": "#b5babd",
           "secondary": "#2c4ebf",
           "accent": "#f97316",
           "neutral": "#2b3440",
           "base-100": "#1d232a",
           "black": "#0f1215",
+
+          "imperial": "b5babd",
+          "rebel": "333333",
 
           "info": "#3abff8",
           "success": "#36d399",
@@ -27,12 +33,15 @@ module.exports = {
         },
       },
       {
-        rebel: {
+        light: {
           "primary": "#333333",
           "secondary": "#BC1E22",
           "accent": "#f97316",
           "neutral": "#2b3440",
           "base-100": "#ffffff",
+
+          "imperial": "b5babd",
+          "rebel": "333333",
 
           "info": "#3abff8",
           "success": "#36d399",
@@ -41,7 +50,7 @@ module.exports = {
         },
       },
     ],
-    darkMode: ["class", '[data-theme="imperial"]'],
+    darkMode: ["class", '[data-theme="dark"]'],
     base: true,
     utils: true,
   },

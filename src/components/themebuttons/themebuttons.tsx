@@ -1,38 +1,15 @@
 
 "use client"
 
-import { useEffect, useState } from 'react';
-import { FaRebel, FaEmpire, FaDesktop } from "react-icons/fa";
-import { themeChange } from 'theme-change'
+import { FaRebel, FaEmpire } from "react-icons/fa";
 import cx from "classnames";
 
-import useTheme from '../../hooks/useTheme';
+import { useTheme } from '../../theme-provider';
 
+type Themes = "rebel" | "light" | "imperial" | "dark";
 
-interface themeProps {
-    theme: string
-    handleThemeChange: (newTheme: string) => void
-}
-
-export default function ThemeButtons({ theme, handleThemeChange }: themeProps) {
-
-    useEffect(() => {
-        themeChange(false);
-
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            console.log('handleThemeChange', handleThemeChange);
-
-            handleThemeChange(savedTheme);
-        }
-        else {
-            handleThemeChange('rebel');
-        }
-
-        return () => {
-            themeChange(false);
-        };
-    }, []);
+export default function ThemeButtons() {
+    const { theme, setTheme } = useTheme();
 
     const rebelClass = cx(
         'btn',
@@ -48,46 +25,24 @@ export default function ThemeButtons({ theme, handleThemeChange }: themeProps) {
         theme === 'imperial' ? 'text-secondary' : ''
     )
 
-    const systemClass = cx(
-        'btn',
-        'theme-btn',
-        'theme-btn-system',
-        theme === 'system' ? 'text-secondary' : ''
-    )
-
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        console.log('handleChange', event.target);
-        handleThemeChange(event.target.id);
+        console.log('handleChange', event.target.id);
+        const newTheme = event.target.id;
+        setTheme(newTheme as Themes);
     }
 
     return (
         <>
             <div className="btn-group">
-
-                <label htmlFor="rebel" className={rebelClass}>
+                <label htmlFor="light" className={rebelClass}>
                     <FaRebel className="icon" />
-                    <input id="rebel" type="radio" name="theme-options" onChange={handleChange} data-set-theme="rebel" data-act-class="ACTIVECLASS" className="hidden" />
+                    <input id="light" type="radio" name="theme-options" onChange={handleChange} data-set-theme="light" data-act-class="ACTIVECLASS" className="hidden" />
                 </label>
 
-                <label htmlFor="imperial" className={imperialClass}>
+                <label htmlFor="dark" className={imperialClass}>
                     <FaEmpire className="icon" />
-                    <input id="imperial" type="radio" name="theme-options" onChange={handleChange} data-set-theme="imperial" data-act-class="ACTIVECLASS" className="hidden" />
+                    <input id="dark" type="radio" name="theme-options" onChange={handleChange} data-set-theme="dark" data-act-class="ACTIVECLASS" className="hidden" />
                 </label>
-
-                {/* <label htmlFor="system" className={systemClass}>
-                    <FaDesktop className="icon" />
-                    <input id="system" type="radio" name="theme-options" onChange={handleChange} data-set-theme="" data-act-class="ACTIVECLASS" className="hidden" />
-                </label> */}
-
-                {/* <label htmlFor="rebel" className={rebelClass}>
-                    <FaRebel className="icon" />
-                    <input id="rebel" type="radio" name="theme-options" onChange={handleChange} data-set-theme="light" data-act-class="ACTIVECLASS" className="hidden" />
-                </label>
-
-                <label htmlFor="imperial" className={imperialClass}>
-                    <FaEmpire className="icon" />
-                    <input id="imperial" type="radio" name="theme-options" onChange={handleChange} data-set-theme="dark" data-act-class="ACTIVECLASS" className="hidden" />
-                </label> */}
             </div>
         </>
     )
