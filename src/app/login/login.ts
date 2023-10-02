@@ -43,13 +43,13 @@ export default async function Login() {
         revalidatePath('/')
     }
 
-    return (
-        <form action= { handleSignUp } >
-            <input name="email" />
-            <input type="password" name = "password" />
-            <button>Sign up < /button>
-            < button formAction = { handleSignIn } > Sign in </button>
-            < button formAction = { handleSignOut } > Sign out < /button>
-        < /form>
-  )
+    // return ();
+        // <form action= { handleSignUp } >
+        //     <input name="email" />
+        //     <input type="password" name = "password" />
+        //     <button>Sign up < /button>
+        //     < button formAction = { handleSignIn } > Sign in </button>
+        //     < button formAction = { handleSignOut } > Sign out < /button>
+        // < /form>
+    // )
 }

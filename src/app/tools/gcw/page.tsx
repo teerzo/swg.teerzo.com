@@ -118,6 +118,7 @@ export default function Page() {
 
     useEffect(() => {
         calculateRank();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selected])
 
 
@@ -137,6 +138,7 @@ export default function Page() {
         }, 1000)
 
         return () => clearInterval(timer)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [time])
 
     function calculateRemaining() {
@@ -499,7 +501,7 @@ export default function Page() {
                                             <label className="min-w-140 grow label pl-2 disabled" >
                                                 <span className="label-text"> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>
                                             </label>
-{/* 
+                                            {/* 
                                             <label className="grow label pl-5 disabled" >
                                                 {selected.rank >= item.id ?
                                                     <span className="label-text text-secondary "> {selected.faction === 'imperial' ? item.nameImp : item.nameReb} </span>

@@ -19,6 +19,7 @@ export default function Home() {
     }
 
     getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return todos ? <pre>{JSON.stringify(todos, null, 2)}</pre> : <p>Loading todos...</p>
