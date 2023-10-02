@@ -30,7 +30,7 @@ export default function Characters({ characters }: any) {
                     </thead>
                     <tbody>
                         {characters ? <> </> : <> No characters available </>}
-                        {characters.map((item, key) => {
+                        {characters.map((item:any, key:any) => {
                             return (
                                 <tr key={item.key} >
                                     <th>
