@@ -135,7 +135,7 @@ export default function EntBuff() {
     }
 
 
-    function handleChange(event: Event & { target: HTMLButtonElement}, ) {
+    function handleChange(event: Event & { target: HTMLInputElement}, ) {
         const { target } = event
 
         // const target = event?.target;
@@ -154,7 +154,7 @@ export default function EntBuff() {
     }
 
     function handleIncrement(event: Event & { target: HTMLButtonElement}, ) {
-        const target = event?.target;
+        const { target } = event
 
         console.log('handleIncrement', event.target);
 
@@ -170,8 +170,8 @@ export default function EntBuff() {
         _options = calculatePoints(_options);
         setOptions(_options);
     }
-    function handleDecrement(event: React.MouseEvent<HTMLElement>) {
-        const target = event?.target;
+    function handleDecrement(event: Event & { target: HTMLButtonElement}, ) {)
+        const { target } = event
 
         console.log('handleDecrement', event.target);
 
