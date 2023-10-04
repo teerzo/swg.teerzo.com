@@ -13,7 +13,7 @@ import { cookies } from 'next/headers';
 import { Session } from '@supabase/supabase-js';
 
 
-export default function Navbar({ session }: { session: Session }) {
+export default function Navbar({ session }: { session: Session | null }) {
     const { theme, setTheme } = useTheme();
 
     return (
