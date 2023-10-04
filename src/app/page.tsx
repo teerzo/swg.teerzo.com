@@ -1,27 +1,28 @@
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+'use server'
 
+import { auth } from "@/app/auth/auth";
+
+import { redirect } from 'next/navigation'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
+import Link from 'next/link'
+import { cache } from 'react'
 
 import type { Database } from '@/lib/database.types'
-import Link from 'next/link'
-
-import { redirect } from "next/navigation";
 
 
 export default async function Home() {
-  const supabase = createServerComponentClient<Database>({ cookies });
-  const { data: { session } } = await supabase.auth.getSession();
+
+  const cookieStore = cookies()
+  const session = await auth({ cookieStore })
 
   if (!session) {
-    redirect("/login");
+    // redirect("/login");
   }
 
   return (
     <main className="flex min-h-screen flex-col">
-
-      {session ?
+      {/* {session ?
         <div>
           <p> Signed in </p>
           <Link href="/logout"> <button className="btn"> LOG OUT </button> </Link>
@@ -31,11 +32,12 @@ export default async function Home() {
           <p> Not signed in </p>
           <Link href="/login"> <button className="btn"> LOGIN </button> </Link>
         </div>
-      }
+      } */}
 
-
-
-
+      <div className="flex flex-col justify-center">
+        <p> Tools </p>
+        <Link href="/tools"> <button className="btn"> Tools </button> </Link>
+      </div>
     </main>
   )
 }

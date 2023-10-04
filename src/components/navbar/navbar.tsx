@@ -1,5 +1,5 @@
 
-// "use client"
+"use client"
 
 import { useEffect, useState } from 'react';
 import ThemeButtons from '../themebuttons/themebuttons';
@@ -9,7 +9,11 @@ import { useTheme } from '../../theme-provider';
 
 type Themes = "rebel" | "light" | "imperial" | "dark";
 
-export default function Navbar() {
+import { cookies } from 'next/headers';
+import { Session } from '@supabase/supabase-js';
+
+
+export default function Navbar({ session }: { session: Session }) {
     const { theme, setTheme } = useTheme();
 
     return (
@@ -23,11 +27,14 @@ export default function Navbar() {
                         <li>
                             <Link href="/tools"> Tools </Link>
                         </li>
+
+                        <span> {session?.user ? <> Logged in </> : <> Logged out </>} </span>
+
                         {/* <li>
                             <a>PvP</a>
                             <ul className="p-2">
-                                <li> <Link href="/pvp/timers" > Invasion Timers </Link> </li>
-                                <li> <Link href="/pvp/gcw" > GCW Calculator </Link> </li>
+                            <li> <Link href="/pvp/timers" > Invasion Timers </Link> </li>
+                            <li> <Link href="/pvp/gcw" > GCW Calculator </Link> </li>
                             </ul>
                         </li> */}
                         {/* <li>
@@ -61,6 +68,7 @@ export default function Navbar() {
                 <div className="btn m-1">
                     <Link href="/tools"> Tools </Link>
                 </div>
+                <span> {session?.user ? <> Logged in </> : <> Logged out </>} </span>
 
                 {/* <div className="btn m-1">
                     <Link href="/characters"> Characters? </Link>

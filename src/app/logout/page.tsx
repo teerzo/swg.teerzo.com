@@ -1,7 +1,6 @@
 
 
-
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { auth } from "@/app/auth/auth";
 import { cookies } from 'next/headers'
 
 import type { Database } from '@/lib/database.types'
@@ -12,9 +11,8 @@ import LogoutForm from './logout-form';
 import { redirect } from "next/navigation";
 
 export default async function Login() {
-
-    const supabase = createServerComponentClient<Database>({ cookies });
-    const { data: { session } } = await supabase.auth.getSession();
+    const cookieStore = cookies()
+    const session = await auth({ cookieStore })
 
     if (!session) {
         redirect("/login");

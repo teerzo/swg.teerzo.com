@@ -1,13 +1,14 @@
-'use client';
+// 'use client';
 
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Navbar from '../components/navbar/navbar';
 import { useEffect } from "react";
-import { useTheme, ThemeProvider } from '../theme-provider';
+import { useTheme, ThemeProvider, Themes } from '../theme-provider';
 import ThemeButtons from '../components/themebuttons/themebuttons';
+import Header from '../components/header/header';
 
-type Themes = "rebel" | "light" | "imperial" | "dark";
+
+// type Themes = "rebel" | "light" | "imperial" | "dark";
 
 const inter = Inter({ subsets: ['latin'] })
 // export const metadata = {
@@ -21,7 +22,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider>
-          <Navbar />
+          <Header />
           <div className={"container"}>
             {children}
           </div>

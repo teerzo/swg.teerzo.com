@@ -1,16 +1,20 @@
 
 
+import { auth } from "@/app/auth/auth";
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import type { Database } from '@/lib/database.types'
 import { redirect } from "next/navigation";
 import Characters from './characters';
 
-export default async function Page() {
-    const supabase = createServerComponentClient<Database>({ cookies });
-    const { data: { session } } = await supabase.auth.getSession();
+import { getCharacters } from "../actions";
 
-    const { data: characters } = await supabase.from("characters").select();
+export default async function Page() {
+    const cookieStore = cookies()
+    const session = await auth({ cookieStore })
+
+    const characters = await getCharacters();
+
 
 
 

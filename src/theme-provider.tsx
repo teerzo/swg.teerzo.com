@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, useEffect, useContext, PropsWithChildren } from 'react';
 
-type Themes = "rebel" | "light" | "imperial" | "dark";
+export type Themes = "rebel" | "light" | "imperial" | "dark";
 type ThemeState = {
     theme: Themes;
     setTheme(theme: Themes): void;

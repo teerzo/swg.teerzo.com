@@ -1,7 +1,6 @@
 
 
-
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { auth } from "@/app/auth/auth";
 import { cookies } from 'next/headers'
 
 import type { Database } from '@/lib/database.types'
@@ -10,9 +9,8 @@ import LoginForm from './login-form'
 
 
 export default async function Login() {
-
-    const supabase = createServerComponentClient<Database>({ cookies });
-    const { data: { session } } = await supabase.auth.getSession();
+    const cookieStore = cookies()
+    const session = await auth({ cookieStore })
 
     return (
         <div className="flex flex-col w-full items-center">
