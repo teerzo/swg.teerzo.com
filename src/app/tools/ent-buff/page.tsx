@@ -26,22 +26,27 @@ export default function EntBuff() {
         { id: 'Stamina', name: 'Stamina', group: 'attributes', description: 'blah', points: 1, max: 10, per: 1, stats: 30, statsText: '+ to Stamina attribute', checked: false },
         { id: 'Strength', name: 'Strength', group: 'attributes', description: 'blah', points: 1, max: 10, per: 1, stats: 30, statsText: '+ to Strength attribute', checked: false },
 
-        { id: 'acr', name: 'Action Cost Reduction', group: 'combat', description: 'blah', points: 5, max: 1, per: 5, stats: 0, statsText: '9% bonus in reducing all action costs', checked: false },
+        { id: 'acr', name: 'Action Cost Reduction', group: 'combat', description: 'blah', points: 5, max: 1, per: 5, stats: 0, statsText: '9% reduction to all action costs', checked: false },
         { id: 'crit', name: 'Critical Hit', group: 'combat', description: 'blah', points: 5, max: 1, per: 5, stats: 0, statsText: '7% bonus to critical hit chance', checked: false },
         { id: 'chr', name: 'Critical Hit Defense', group: 'combat', description: 'blah', points: 5, max: 1, per: 5, stats: 0, statsText: '7% bonus to critical hit defense', checked: false },
-        { id: 'glancing', name: 'Glancing Blow', group: 'combat', description: 'blah', points: 5, max: 1, per: 5, stats: 0, statsText: '7% bonus to glancing blow', checked: false },
+        { id: 'glancing', name: 'Glancing Blow', group: 'combat', description: 'blah', points: 5, max: 1, per: 5, stats: 0, statsText: '7% bonus to glancing blow chance', checked: false },
 
+        { id: 'flush', name: 'Flush With Success', group: 'misc', description: 'blah', points: 2, max: 10, per: 2, stats: 1.5, statsText: '% increase experience earned', checked: false },
+        { id: 'harvest', name: 'Harvest Faire', group: 'misc', description: 'blah', points: 2, max: 10, per: 2, stats: 0.5, statsText: '% increase to resources gathered with harvesters', checked: false },
+        { id: 'healer', name: 'Healer', group: 'misc', description: 'blah', points: 2, max: 10, per: 2, stats: 1.5, statsText: '% increase the strength of your healing abilities', checked: false },
+        { id: 'resil', name: 'Resilience', group: 'misc', description: 'blah', points: 2, max: 10, per: 2, stats: 1, statsText: '% damage reduction of damage over time effects', checked: false },
+        { id: 'flow', name: 'Go With The Flow', group: 'misc', description: 'blah', points: 2, max: 10, per: 2, stats: 2.5, statsText: '% increase to all movement rates', checked: false },
+        { id: 'chance', name: 'Second Chance', group: 'misc', description: 'blah', points: 2, max: 8, per: 2, stats: 3, statsText: '% chance to automatically heal when struck in combat', checked: false },
+        { id: 'camodetect', name: 'Camouflauge Detection', group: 'misc', description: 'blah', points: 1, max: 5, per: 1, stats: 20, statsText: '+ increase in Camouflage Detection', checked: false },
 
-        { id: 'flush', name: 'Flush With Success', group: 'misc', description: 'blah', points: 2, max: 5, per: 2, stats: 3, statsText: '% increase experience earned', checked: false },
-        { id: 'camodetect', name: 'Camouflauge Detection', group: 'misc', description: 'blah', points: 1, max: 5, per: 1, stats: 30, statsText: '', checked: false },
+        { id: 'elemental', name: 'Elemental', group: 'resistances', description: 'blah', points: 1, max: 5, per: 1, stats: 750, statsText: '+ Elemental protection', checked: false },
+        { id: 'energy', name: 'Energy', group: 'resistances', description: 'blah', points: 1, max: 5, per: 1, stats: 750, statsText: '+ Kinetic protection', checked: false },
+        { id: 'kinetic', name: 'Kinetic', group: 'resistances', description: 'blah', points: 1, max: 5, per: 1, stats: 750, statsText: '+ Energy protection', checked: false },
 
-        { id: 'elemental', name: 'Elemental', group: 'resistances', description: 'blah', points: 1, max: 5, per: 1, stats: 30, statsText: '', checked: false },
-        { id: 'energy', name: 'Energy', group: 'resistances', description: 'blah', points: 1, max: 5, per: 1, stats: 30, statsText: '', checked: false },
-        { id: 'kinetic', name: 'Kinetic', group: 'resistances', description: 'blah', points: 1, max: 5, per: 1, stats: 30, statsText: '', checked: false },
-
-        { id: 'assembly', name: 'Crafting Assembly', group: 'trade', description: 'blah', points: 2, max: 10, per: 2, stats: 30, statsText: '', checked: false },
-        { id: 'amazing', name: 'Amazing Success Chance', group: 'trade', description: 'blah', points: 5, max: 10, per: 5, stats: 30, statsText: '', checked: false },
-        { id: 'reverse', name: 'Reverse Engineering Efficiency', group: 'trade', description: 'blah', points: 5, max: 10, per: 5, stats: 30, statsText: '', checked: false },
+        { id: 'assembly', name: 'Crafting Assembly', group: 'trade', description: 'blah', points: 2, max: 10, per: 2, stats: 1, statsText: '+ increase to Assembly and Experience gains for all crafting', checked: false },
+        { id: 'amazing', name: 'Amazing Success Chance', group: 'trade', description: 'blah', points: 5, max: 10, per: 5, stats: 0.4, statsText: '% bonus to Amazing Success crafting results', checked: false },
+        { id: 'sampling', name: 'Hand Sampling', group: 'trade', description: 'blah', points: 2, max: 10, per: 2, stats: 2, statsText: '% increase to resources gathered via hand sampling', checked: false },
+        { id: 'reverse', name: 'Reverse Engineering Efficiency', group: 'trade', description: 'blah', points: 5, max: 10, per: 5, stats: 4, statsText: '+ increase in Reverse Engineering Efficiency', checked: false },
     ]
 
     const [options, setOptions] = useState<Option[]>(defaultOptions);
@@ -135,7 +140,7 @@ export default function EntBuff() {
     }
 
 
-    function handleChange(event: React.FormEvent<HTMLInputElement> & { target: HTMLInputElement}, ) {
+    function handleChange(event: React.FormEvent<HTMLInputElement> & { target: HTMLInputElement },) {
         const { target } = event
 
         // const target = event?.target;
@@ -153,7 +158,7 @@ export default function EntBuff() {
         setOptions(_options);
     }
 
-    function handleIncrement(event: React.MouseEvent<HTMLButtonElement> & { target: HTMLButtonElement}, ) {
+    function handleIncrement(event: React.MouseEvent<HTMLButtonElement> & { target: HTMLButtonElement },) {
         const { target } = event
 
         console.log('handleIncrement', event.target);
@@ -170,7 +175,7 @@ export default function EntBuff() {
         _options = calculatePoints(_options);
         setOptions(_options);
     }
-    function handleDecrement(event: React.MouseEvent<HTMLButtonElement> & { target: HTMLButtonElement}, ) {
+    function handleDecrement(event: React.MouseEvent<HTMLButtonElement> & { target: HTMLButtonElement },) {
         const { target } = event
 
         console.log('handleDecrement', event.target);
@@ -355,10 +360,10 @@ export default function EntBuff() {
                         {options.map((item, key) => {
                             return item.checked && item.points > 0 ? (
                                 <div key={key} className="flex flex-col mb-2">
-                                    <div className={`flex flex-row items-center justify-between gap-1`}>
+                                    <div className={`flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1`}>
                                         {/* <span> <b> {item.points} </b></span> */}
                                         <span>  <b> {item.name} </b></span>
-                                        <span> {item.stats > 0 ? item.stats * item.points : ''} {item.statsText} </span>
+                                        <span> {item.stats > 0 ? item.stats * item.points : ''}{item.statsText} </span>
                                     </div>
                                 </div>
                             ) : <> </>
@@ -376,12 +381,30 @@ export default function EntBuff() {
 
 
 
-            <div className="flex flex-col w-full md:max-w-2xl gap-1">
+            {/* <div className="flex flex-col w-full md:max-w-2xl gap-1">
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text"> <h3> Message for ent </h3></span>
                     </label>
-                    <input type="text" placeholder="Type here" className="input input-bordered w-full" value={message} onChange={() => {}}/>
+                    <input type="text" placeholder="Type here" className="input input-bordered w-full" value={message} onChange={() => { }} />
+
+                    <button onClick={() => { navigator.clipboard.writeText(message) }}> Copy </button>
+
+                </div>
+            </div> */}
+
+            <div className="flex flex-col w-full md:max-w-2xl items-center p-10">
+                <span className='font-bold mb-5'> Message for Entertainer: </span>
+                <div className="join">
+                    <div>
+                        <div>
+                            <input className="input input-bordered join-item" placeholder="Search" value={message} onChange={() => { }} />
+                        </div>
+                    </div>
+                    <div className="indicator">
+                        {/* <span className="indicator-item badge badge-secondary">new</span> */}
+                        <button className="btn btn-outline border-base-300 join-item" onClick={() => { navigator.clipboard.writeText(message) }}> Copy </button>
+                    </div>
                 </div>
             </div>
 
