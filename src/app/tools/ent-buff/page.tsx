@@ -63,11 +63,6 @@ export default function EntBuff() {
     }, [])
 
     function loadQuery() {
-
-        // const qs = searchParams.
-        // console.log('loadQuery', qs);
-        // const qs = router.
-
         let _options = [...options];
 
         for (let i in _options) {
@@ -88,29 +83,23 @@ export default function EntBuff() {
     function updateQuery() {
         const params = new URLSearchParams()
 
-        // let qs = '';
-        // router.push('?test=foo')
-
         for (let i in options) {
             if (options[i].checked && options[i].points > 0) {
                 params.set(options[i].id, options[i].points.toString());
             }
         }
         console.log('qs', params.toString());
-        router.push(`?${params.toString()}`);
+        // router.push(`/?${params.toString()}`, undefined, { shallow: true });
+        window.history.pushState({}, '', `?${params.toString()}`);
     }
 
     function updateMessage() {
-
-        let _message = 'OI BRUV I CAN I GET ';
-
+        let _message = '';
         for (let i in options) {
             if (options[i].checked && options[i].points > 0) {
                 _message += `${options[i].name} ${options[i].points},`;
-                // params.set(options[i].id, options[i].points.toString());
             }
         }
-
         setMessage(_message);
     }
 
@@ -394,8 +383,10 @@ export default function EntBuff() {
             </div> */}
 
             <div className="flex flex-col w-full md:max-w-2xl items-center p-10">
-                <span className='font-bold mb-5'> Message for Entertainer: </span>
-                <div className="join">
+                <span className='font-bold'> Message for Entertainer: </span>
+                <span className={`${points > 20 ? '' : 'hidden'} text-error`}> Too many points </span>
+
+                <div className="join mt-5">
                     <div>
                         <div>
                             <input className="input input-bordered join-item" placeholder="Search" value={message} onChange={() => { }} />
