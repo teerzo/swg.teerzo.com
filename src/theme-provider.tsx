@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, useEffect, useContext, PropsWithChildren } from 'react';
 
-export type Themes = "rebel" | "light" | "imperial" | "dark";
+export type Themes = "rebel" | "light" | "imperial" | "dark" | null;
 type ThemeState = {
     theme: Themes;
     setTheme(theme: Themes): void;
@@ -38,22 +38,26 @@ type Props = {
 
 export const ThemeProvider = ({ children }: Props) => {
     const key = 'swg-tools-theme';
-    const _theme = window.localStorage.getItem(key)
-    const [theme, setNewTheme] = useState<Themes>(_theme ? _theme as Themes : 'light' );
+    // const _theme = window.localStorage.getItem(key)
+    // const [theme, setNewTheme] = useState<Themes>(_theme ? _theme as Themes : 'light' );
+    const [theme, setNewTheme] = useState<Themes>(null);
 
-    // useEffect(() => {
-    //     const _theme = localStorage.getItem(key);
+    useEffect(() => {
+        const _theme = window.localStorage.getItem(key);
 
-    //     console.log('get theme', _theme);
-    //     if (_theme) {
-    //         setTheme(_theme as Themes);
-    //     }
-    // }, [])
+        console.log('get theme', _theme);
+        if (_theme) {
+            setTheme(_theme as Themes);
+        }
+        // const _theme = window.localStorage.getItem(key)
+
+    }, [])
 
     useEffect(() => {
         console.log('theme', theme);
-
-        window.localStorage.setItem(key, theme);
+        if( theme ) {
+            window.localStorage.setItem(key, theme);
+        }
 
 
     }, [theme])
