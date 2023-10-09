@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { LoginButton } from '@/components/login-button/login-button'
 
 // import { Button } from '@/components/ui/button'
 // import { IconSpinner } from '@/components/ui/icons'
@@ -74,29 +75,35 @@ export function LoginForm({
     }
 
     return (
-        <div {...props}>
+        <div className='bg-base-100 border-2 border-base-200 p-10' {...props}>
             <form onSubmit={handleOnSubmit}>
-                <fieldset className="flex flex-col gap-y-4">
-                    <div className="flex flex-col gap-y-1">
-                        {/* <Label>Email</Label> */}
-                        <label>Email</label>
-                        {/* <Input */}
-                        <input
-                            name="email"
-                            type="email"
-                            value={formState.email}
-                            onChange={e =>
-                                setFormState(prev => ({
-                                    ...prev,
-                                    email: e.target.value
-                                }))
-                            }
-                        />
+                <fieldset className="flex flex-col gap-y-4 items-center">
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Email:</span>
+                        </label>
+                        <input name="email" type="text" placeholder="Type here" className="input input-bordered w-full" value={formState.email} onChange={e =>
+                            setFormState(prev => ({
+                                ...prev,
+                                email: e.target.value
+                            }))
+                        } />
                     </div>
-                    <div className="flex flex-col gap-y-1">
-                        {/* <Label>Password</Label> */}
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Password:</span>
+                        </label>
+                        <input name="password" type="password" placeholder="Type here" className="input input-bordered w-full" value={formState.password} onChange={e =>
+                            setFormState(prev => ({
+                                ...prev,
+                                password: e.target.value
+                            }))
+                        } />
+                    </div>
+
+                    {/* <div className="flex flex-col gap-y-1">
                         <label>Password</label>
-                        {/* <Input */}
                         <input
                             name="password"
                             type="password"
@@ -108,11 +115,24 @@ export function LoginForm({
                                 }))
                             }
                         />
-                    </div>
+                    </div> */}
                 </fieldset>
 
-                <div className="mt-4 flex items-center">
-                    <button> Submit button i guess lmao </button>
+                <div className='mt-4 flex flex-row justify-center'>
+                    <LoginButton>  {action === 'sign-in' ? 'Sign in' : 'Sign up'} </LoginButton>
+                </div>
+
+                <div className="divider"></div> 
+
+                {/* <div className='mt-4 flex flex-row justify-center'> 
+                    
+                    <button> GOOGLE </button>
+                </div> */}
+
+                <div className="mt-2 flex flex-row justify-center">
+
+
+                    {/* <button> Submit button i guess lmao </button> */}
                     {/* <Button disabled={isLoading}>
                         {isLoading && <IconSpinner className="mr-2 animate-spin" />}
                         {action === 'sign-in' ? 'Sign In' : 'Sign Up'}
@@ -121,14 +141,14 @@ export function LoginForm({
                         {action === 'sign-in' ? (
                             <>
                                 Don&apos;t have an account?{' '}
-                                <Link href="/sign-up" className="font-medium">
+                                <Link href="/sign-up" className="font-medium underline">
                                     Sign Up
                                 </Link>
                             </>
                         ) : (
                             <>
                                 Already have an account?{' '}
-                                <Link href="/sign-in" className="font-medium">
+                                <Link href="/sign-in" className="font-medium underline">
                                     Sign In
                                 </Link>
                             </>

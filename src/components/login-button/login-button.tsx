@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { FaRebel, FaEmpire, FaUserAlt, FaSkullCrossbones, FaSpider, FaUserAstronaut } from "react-icons/fa";
 
 // import { cn } from '@/lib/utils'
 // import { Button, type ButtonProps } from '@/components/ui/button'
@@ -10,12 +11,14 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 // interface LoginButtonProps extends ButtonProps {
 interface LoginButtonProps {
   showGithubIcon?: boolean
-  text?: string
+  text?: string,
+  children: React.ReactNode
 }
 
 export function LoginButton({
   text = 'Login with GitHub',
   showGithubIcon = true,
+  children,
   // className,
   ...props
 }: LoginButtonProps) {
@@ -23,12 +26,16 @@ export function LoginButton({
   // Create a Supabase client configured to use cookies
   const supabase = createClientComponentClient()
 
-  if (process.env.NEXT_PUBLIC_AUTH_GITHUB !== 'true') {
-    return null
-  }
-
   return (
-    <button> sign in or sum shit lmao </button>
+    <button className='btn'>
+      {isLoading ?
+        <div className="flex flex-col justify-center items-center w-10 rounded-full text-center">
+          <FaUserAlt />
+        </div>
+        :
+        <> {children}</>
+      }
+    </button>
     // <Button
     //   variant="outline"
     //   onClick={async () => {

@@ -1,6 +1,7 @@
 import { auth } from '@/app/auth/auth';
 // import { LoginButton } from '@/components/login-button'
-// import { LoginForm } from '@/components/login-form'
+// import { LoginForm } from '
+import { LoginForm } from '@/components/login-form/login-form'
 // import { Separator } from '@/components/ui/separator'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
@@ -15,8 +16,7 @@ export default async function SignInPage() {
   return (
     <div className="flex h-[calc(100vh-theme(spacing.16))] flex-col items-center justify-center py-10">
       <div className="w-full max-w-sm">
-        <h3> Signup </h3>
-        {/* <LoginForm action="sign-up" /> */}
+        <LoginForm action="sign-up" />
         {/* <Separator className="my-4" /> */}
         <div className="flex justify-center">
           {/* <LoginButton /> */}

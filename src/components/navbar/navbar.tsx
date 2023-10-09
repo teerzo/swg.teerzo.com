@@ -28,7 +28,7 @@ export default function Navbar({ session }: { session: Session | null }) {
                             <Link href="/tools"> Tools </Link>
                         </li>
 
-                        <span> {session?.user ? <> Logged in </> : <> Logged out </>} </span>
+                        {/* <span> {session?.user ? <> Logged in </> : <> Logged out </>} </span> */}
 
                         {/* <li>
                             <a>PvP</a>
@@ -68,7 +68,7 @@ export default function Navbar({ session }: { session: Session | null }) {
                 <div className="btn m-1">
                     <Link href="/tools"> Tools </Link>
                 </div>
-                <span> {session?.user ? <> Logged in </> : <> Logged out </>} </span>
+                {/* <span> {session?.user ? <> Logged in </> : <> Logged out </>} </span> */}
 
                 {/* <div className="btn m-1">
                     <Link href="/characters"> Characters? </Link>
@@ -111,27 +111,47 @@ export default function Navbar({ session }: { session: Session | null }) {
                 </div> */}
             </div>
 
+
             <div className="navbar-end hidden lg:flex">
                 {/* <a className="btn mr-2">Button</a> */}
 
-                <div className="dropdown dropdown-end mr-2">
-                    <label tabIndex={0} className="btn btn-circle avatar">
-                        <div className="w-10 rounded-full icon">
-                            <FaUserAlt />
-                            {/* <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" /> */}
-                        </div>
-                    </label>
-                    <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
+                {session?.user ?
+                    <div className="dropdown dropdown-end mr-2">
+                        <label tabIndex={0} className="btn btn-circle avatar">
+                            <div className="w-10 rounded-full icon">
+                                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            </div>
+                        </label>
+
+
+
+                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 ">
+                            <li>
+                                <a className="justify-between opacity-20">
+                                    Profile
+                                    {/* <span className="badge">New</span> */}
+                                </a>
+                            </li>
+                            <li><a className='opacity-20'>Settings</a></li>
+                            <li><a className="" >Logout</a></li>
+                        </ul>
+
+                    </div>
+                    :
+                    <div className="">
+                        <Link href="/sign-in">
+                            <button className="btn mr-2"> Sign in </button>
+                        </Link>
+                        <label tabIndex={0} className="btn btn-circle mr-5">
+
+                            <div className="flex flex-col justify-center items-center w-10 rounded-full text-center">
+                                <FaUserAlt />
+
+                            </div>
+                        </label>
+                    </div>
+                }
+
 
                 <ThemeButtons />
 

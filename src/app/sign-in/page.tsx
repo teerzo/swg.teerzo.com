@@ -15,12 +15,11 @@ export default async function SignInPage() {
   return (
     <div className="flex h-[calc(100vh-theme(spacing.16))] flex-col items-center justify-center py-10">
       <div className="w-full max-w-sm">
-        {/* <h3> Sign in </h3> */}
         <LoginForm action="sign-in" />
         {/* <Separator className="my-4" /> */}
-        <div className="flex justify-center">
-          <LoginButton />
-        </div>
+        {/* <div className="flex justify-center">
+          <LoginButton> Sign in </LoginButton>
+        </div> */}
       </div>
     </div>
   )

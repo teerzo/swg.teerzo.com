@@ -37,16 +37,31 @@ type Props = {
 }
 
 export const ThemeProvider = ({ children }: Props) => {
-    const [theme, setNewTheme] = useState<Themes>('light');
+    const key = 'swg-tools-theme';
+    const _theme = localStorage.getItem(key)
+    const [theme, setNewTheme] = useState<Themes>(_theme ? _theme as Themes : 'light' );
+
+    // useEffect(() => {
+    //     const _theme = localStorage.getItem(key);
+
+    //     console.log('get theme', _theme);
+    //     if (_theme) {
+    //         setTheme(_theme as Themes);
+    //     }
+    // }, [])
 
     useEffect(() => {
         console.log('theme', theme);
+
+        localStorage.setItem(key, theme);
+
+
     }, [theme])
 
     function setTheme(theme: Themes) {
         console.log('setTheme', theme);
         if (theme) {
-            console.log('setting theme', theme);
+            // console.log('setting theme', theme);
 
             setNewTheme(theme);
         }
