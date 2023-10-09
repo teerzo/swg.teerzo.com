@@ -51,23 +51,25 @@ export default function Navbar({ session }: { session: Session | null }) {
                     </ul>
 
                 </div>
-                <div className="btn btn-ghost text-lg">
-                    {theme === 'rebel' || theme === 'light' ?
-                        <FaRebel className="text-3xl text-secondary icon" />
-                        : <> </>
-                    }
-                    {theme === 'imperial' || theme === 'dark' ?
-                        <FaEmpire className="text-3xl text-secondary icon" />
-                        : <> </>
-                    }
-                    <Link href="/" className="text-primary"> SWG Tools</Link>
-                </div>
+                <Link href="/" className="text-primary">
+                    <div className="btn btn-ghost text-lg">
+                        {theme === 'rebel' || theme === 'light' ?
+                            <FaRebel className="text-3xl text-secondary icon" />
+                            : <> </>
+                        }
+                        {theme === 'imperial' || theme === 'dark' ?
+                            <FaEmpire className="text-3xl text-secondary icon" />
+                            : <> </>
+                        }
+                        SWG Tools
+                    </div>
+                </Link>
             </div>
             <div className="navbar-center invisible lg:visible lg:flex">
 
-                <div className="btn m-1">
-                    <Link href="/tools"> Tools </Link>
-                </div>
+                <Link href="/tools">
+                    <div className="btn m-1"> Tools </div>
+                </Link>
                 {/* <span> {session?.user ? <> Logged in </> : <> Logged out </>} </span> */}
 
                 {/* <div className="btn m-1">
@@ -179,7 +181,7 @@ export default function Navbar({ session }: { session: Session | null }) {
             </div>
 
 
-        </div>
+        </div >
 
     )
 }
