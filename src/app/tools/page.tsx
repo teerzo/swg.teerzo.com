@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image, { StaticImageData } from "next/image"
 
+import imgEnt from '../../../public/images/img-ent.png'
 import imgGCW from '../../../public/images/img-gcw.png'
 
 
@@ -12,10 +13,10 @@ export default function Page() {
             {/* <h1>Tools</h1> */}
 
             <div className="flex flex-row flex-wrap justify-center gap-1">
-                <Card link={'tools/ent-buff'} title="Ent buff builder" description={'blah blah blah'} image={imgGCW} />
-                <Card link={'tools/expertise'} title="Expertise calculator" description={'blah blah blah'} image={imgGCW} />
-                <Card link={'tools/gcw'} title="GCW calculator" description={'blah blah blah'} image={imgGCW} />
-                <Card link={'tools/timers'} title="Invasion timers" description={'blah blah blah'} image={imgGCW} />
+                <Card link={'tools/ent-buff'} title="Entertainer buff builder" description={'Entertainer buff builder'} image={imgEnt} />
+                <Card link={'tools/expertise'} title="Expertise Calculator" description={'Expertise Calculator'} image={imgGCW} />
+                <Card link={'tools/gcw'} title="GCW Calculator" description={'GCW Point Calculator'} image={imgGCW} />
+                <Card link={'tools/timers'} title="Invasion timers" description={'Invasion and Flashpoint timers'} image={imgGCW} />
 
             </div>
         </div>

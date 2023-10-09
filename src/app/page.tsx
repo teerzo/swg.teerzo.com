@@ -33,9 +33,7 @@ export default async function Home() {
           <Link href="/login"> <button className="btn"> LOGIN </button> </Link>
         </div>
       } */}
-
-      <div className="flex flex-col justify-center">
-        <p> Tools </p>
+      <div className="flex h-[calc(100vh-theme(spacing.16))] flex-col items-center justify-center py-10">
         <Link href="/tools"> <button className="btn"> Tools </button> </Link>
       </div>
     </main>

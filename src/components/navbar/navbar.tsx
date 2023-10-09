@@ -20,12 +20,12 @@ export default function Navbar({ session }: { session: Session | null }) {
         <div className="navbar bg-base-100 shadow-md sticky top-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                    <label tabIndex={0} className="btn btn-ghost text-sm lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-primary">
-                        <li>
-                            <Link href="/tools"> Tools </Link>
+                        <li className='mb-2'>
+                            <Link href="/tools" className='text-lg'> Tools </Link>
                         </li>
 
                         {/* <span> {session?.user ? <> Logged in </> : <> Logged out </>} </span> */}
@@ -43,16 +43,17 @@ export default function Navbar({ session }: { session: Session | null }) {
                             </ul>
                         </li> */}
 
-                        <li>
+                        {/* <li>
                             <span>
-                                <ThemeButtons />
+                               
                             </span>
-                        </li>
+                        </li> */}
+                        <ThemeButtons />
                     </ul>
 
                 </div>
                 <Link href="/" className="text-primary">
-                    <div className="btn btn-ghost text-lg">
+                    <div className="btn btn-ghost text-md lg:text-lg">
                         {theme === 'rebel' || theme === 'light' ?
                             <FaRebel className="text-3xl text-secondary icon" />
                             : <> </>
@@ -65,7 +66,7 @@ export default function Navbar({ session }: { session: Session | null }) {
                     </div>
                 </Link>
             </div>
-            <div className="navbar-center invisible lg:visible lg:flex">
+            <div className="navbar-center hidden lg:flex">
 
                 <Link href="/tools">
                     <div className="btn m-1"> Tools </div>
@@ -115,7 +116,6 @@ export default function Navbar({ session }: { session: Session | null }) {
 
 
             <div className="navbar-end hidden lg:flex">
-                {/* <a className="btn mr-2">Button</a> */}
 
                 {session?.user ?
                     <div className="dropdown dropdown-end mr-2">
@@ -124,8 +124,6 @@ export default function Navbar({ session }: { session: Session | null }) {
                                 <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                             </div>
                         </label>
-
-
 
                         <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 ">
                             <li>
@@ -154,16 +152,49 @@ export default function Navbar({ session }: { session: Session | null }) {
                     </div>
                 }
 
-
                 <ThemeButtons />
 
             </div>
             <div className="navbar-end lg:hidden">
-                <div className="dropdown dropdown-end mr-2">
+                {session?.user ?
+                    <div className="dropdown dropdown-end mr-2">
+                        <label tabIndex={0} className="btn btn-circle avatar">
+                            <div className="w-10 rounded-full icon">
+                                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            </div>
+                        </label>
+
+                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 ">
+                            <li>
+                                <a className="justify-between opacity-20">
+                                    Profile
+                                    {/* <span className="badge">New</span> */}
+                                </a>
+                            </li>
+                            <li><a className='opacity-20'>Settings</a></li>
+                            <li><a className="" >Logout</a></li>
+                        </ul>
+
+                    </div>
+                    :
+                    <div className="">
+                        <Link href="/sign-in">
+                            <button className="btn mr-2"> Sign in </button>
+                        </Link>
+                        <label tabIndex={0} className="btn btn-circle mr-5">
+
+                            <div className="flex flex-col justify-center items-center w-10 rounded-full text-center">
+                                <FaUserAlt />
+
+                            </div>
+                        </label>
+                    </div>
+                }
+
+                {/* <div className="dropdown dropdown-end mr-2">
                     <label tabIndex={0} className="btn btn-circle avatar">
                         <div className="w-10 rounded-full icon">
                             <FaUserAlt />
-                            {/* <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" /> */}
                         </div>
                     </label>
                     <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
@@ -176,7 +207,7 @@ export default function Navbar({ session }: { session: Session | null }) {
                         <li><a>Settings</a></li>
                         <li><a>Logout</a></li>
                     </ul>
-                </div>
+                </div> */}
 
             </div>
 
