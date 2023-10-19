@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useTheme, ThemeProvider, Themes } from '../theme-provider';
 import ThemeButtons from '../components/themebuttons/themebuttons';
 import Header from '../components/header/header';
+import { Toaster } from 'react-hot-toast';
 
 
 // type Themes = "rebel" | "light" | "imperial" | "dark";
@@ -24,6 +25,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
         <ThemeProvider>
           <Header />
           <div className={"container"}>
+            <Toaster/>
             {children}
           </div>
         </ThemeProvider>

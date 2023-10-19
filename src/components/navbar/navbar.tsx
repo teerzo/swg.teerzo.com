@@ -133,7 +133,7 @@ export default function Navbar({ session }: { session: Session | null }) {
                                 </a>
                             </li>
                             <li><a className='opacity-20'>Settings</a></li>
-                            <li><a className="" >Logout</a></li>
+                            <li><a className="" href="/sign-out" >Sign out</a></li>
                         </ul>
 
                     </div>
@@ -172,7 +172,7 @@ export default function Navbar({ session }: { session: Session | null }) {
                                 </a>
                             </li>
                             <li><a className='opacity-20'>Settings</a></li>
-                            <li><a className="" >Logout</a></li>
+                            <li><a className="" href="/sign-out" >Sign out</a></li>
                         </ul>
 
                     </div>

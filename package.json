@@ -12,19 +12,20 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@supabase/auth-helpers-nextjs": "^0.8.1",
-    "@supabase/supabase-js": "^2.37.0",
-    "@types/node": "20.8.0",
-    "@types/react": "18.2.23",
-    "@types/react-dom": "18.2.8",
+    "@supabase/supabase-js": "^2.38.0",
+    "@types/node": "20.8.3",
+    "@types/react": "18.2.25",
+    "@types/react-dom": "18.2.11",
     "autoprefixer": "10.4.16",
     "classnames": "^2.3.2",
-    "eslint": "8.50.0",
-    "eslint-config-next": "13.5.3",
-    "next": "13.5.3",
-    "npm-check-updates": "^16.14.4",
+    "eslint": "8.51.0",
+    "eslint-config-next": "13.5.4",
+    "next": "13.5.4",
+    "npm-check-updates": "^16.14.5",
     "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "tailwindcss": "3.3.3",
     "theme-change": "^2.5.0",
@@ -32,7 +33,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "daisyui": "^3.8.2",
-    "supabase": "^1.99.5"
+    "daisyui": "^3.9.2",
+    "supabase": "^1.100.1"
   }
 }

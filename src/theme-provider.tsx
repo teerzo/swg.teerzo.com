@@ -45,7 +45,7 @@ export const ThemeProvider = ({ children }: Props) => {
     useEffect(() => {
         const _theme = window.localStorage.getItem(key);
 
-        console.log('get theme', _theme);
+        // console.log('get theme', _theme);
         if (_theme) {
             setTheme(_theme as Themes);
         }
@@ -54,7 +54,7 @@ export const ThemeProvider = ({ children }: Props) => {
     }, [])
 
     useEffect(() => {
-        console.log('theme', theme);
+        // console.log('theme', theme);
         if( theme ) {
             window.localStorage.setItem(key, theme);
         }
@@ -63,7 +63,7 @@ export const ThemeProvider = ({ children }: Props) => {
     }, [theme])
 
     function setTheme(theme: Themes) {
-        console.log('setTheme', theme);
+        // console.log('setTheme', theme);
         if (theme) {
             // console.log('setting theme', theme);
 
