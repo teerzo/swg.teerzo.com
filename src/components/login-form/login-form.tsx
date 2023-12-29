@@ -52,7 +52,7 @@ export function LoginForm({
         const { error, data } = await supabase.auth.signUp({
             email,
             password,
-            options: { emailRedirectTo: `${location.origin}/api/auth/callback` }
+            options: { emailRedirectTo: `${location.origin}/auth/callback` }
         })
 
         if (!error && !data.session)
