@@ -53,13 +53,13 @@ export default function Navbar({ session }: { session: Session | null }) {
 
                 </div>
                 <Link href="/" className="text-primary">
-                    <div className="btn btn-ghost text-md lg:text-lg">
+                    <div className="btn btn-ghost text-sm lg:text-lg p-0 lg:p-2">
                         {theme === 'rebel' || theme === 'light' ?
-                            <FaRebel className="text-3xl text-secondary icon" />
+                            <FaRebel className="text-1xl lg:text-3xl text-secondary icon" />
                             : <> </>
                         }
                         {theme === 'imperial' || theme === 'dark' ?
-                            <FaEmpire className="text-3xl text-secondary icon" />
+                            <FaEmpire className="text-1xl lg:text-3xl text-secondary icon" />
                             : <> </>
                         }
                         SWG Tools
@@ -142,7 +142,7 @@ export default function Navbar({ session }: { session: Session | null }) {
                         <Link href="/sign-in">
                             <button className="btn mr-2"> Sign in </button>
                         </Link>
-                        <label tabIndex={0} className="btn btn-circle mr-5">
+                        <label tabIndex={0} className="btn btn-circle lg:mr-2">
 
                             <div className="flex flex-col justify-center items-center w-10 rounded-full text-center">
                                 <FaUserAlt />
@@ -152,7 +152,10 @@ export default function Navbar({ session }: { session: Session | null }) {
                     </div>
                 }
 
-                <ThemeButtons />
+                <div className='mr-2'>
+                    <ThemeButtons />
+                </div>
+
 
             </div>
             <div className="navbar-end lg:hidden">
@@ -181,7 +184,7 @@ export default function Navbar({ session }: { session: Session | null }) {
                         <Link href="/sign-in">
                             <button className="btn mr-2"> Sign in </button>
                         </Link>
-                        <label tabIndex={0} className="btn btn-circle mr-5">
+                        <label tabIndex={0} className="btn btn-circle mr-2">
 
                             <div className="flex flex-col justify-center items-center w-10 rounded-full text-center">
                                 <FaUserAlt />
