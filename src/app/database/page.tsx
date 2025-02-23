@@ -326,8 +326,8 @@ const people = [
     { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
     // More people...
 ]
-  
-  export function Table() {
+
+function Table() {
     return (
         <div className="px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-center">
