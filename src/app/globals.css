@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+@import "tailwindcss";
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -50,9 +49,10 @@ body {
 }
 
 .container {
+  width: 100%;
   /* border: 1px solid green; */
-  padding: 10px;
-  margin: 0 auto;
+  /* padding: 10px; */
+  /* margin: 0 auto; */
 }
 
 .theme-btn {

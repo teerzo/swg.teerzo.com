@@ -203,17 +203,20 @@ export default function EntBuff() {
                         <h3 className='bg-base-200 text-center font-bold'> Attributes </h3>
                         <div className='p-2'>
                             {options.map((item, key) => {
-                                return item?.group === 'attributes' ?
-                                    (
-                                        <div key={key} className='flex flex-row gap-2'>
-                                            <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
-                                            <label htmlFor={item.id}> {item.name} </label>
-                                            <div className='flex-grow'> </div>
-                                            <span className='whitespace-nowrap'> {item.per} - {item.max} </span>
-                                        </div>
-                                    )
-                                    :
-                                    <> </>
+                                return (
+                                    <div key={key} className='flex flex-row gap-2'>
+                                        {item?.group === 'attributes' ?
+                                            <>
+                                                <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
+                                                <label htmlFor={item.id}> {item.name} </label>
+                                                <div className='flex-grow'> </div>
+                                                <span className='whitespace-nowrap'> {item.per} - {item.max} </span>
+                                            </>
+                                            :
+                                            <> </>
+                                        }
+                                    </div>
+                                )
                             })}
                         </div>
                     </div>
@@ -222,17 +225,20 @@ export default function EntBuff() {
                         <h3 className='bg-base-200 text-center font-bold'> Combat </h3>
                         <div className='p-2'>
                             {options.map((item, key) => {
-                                return item?.group === 'combat' ?
-                                    (
-                                        <div key={key} className='flex flex-row gap-2'>
-                                            <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
-                                            <label htmlFor={item.id}> {item.name} </label>
-                                            <div className='flex-grow'> </div>
-                                            <span className='whitespace-nowrap'>{item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
-                                        </div>
-                                    )
-                                    :
-                                    <> </>
+                                return (
+                                    <div key={key} className='flex flex-row gap-2'>
+                                        {item?.group === 'combat' ?
+                                            <>
+                                                <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
+                                                <label htmlFor={item.id}> {item.name} </label>
+                                                <div className='flex-grow'> </div>
+                                                <span className='whitespace-nowrap'>{item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
+                                            </>
+                                            :
+                                            <> </>
+                                        }
+                                    </div>
+                                )
                             })}
                         </div>
                     </div>
@@ -240,17 +246,20 @@ export default function EntBuff() {
                         <h3 className='bg-base-200 text-center font-bold'> Misc </h3>
                         <div className='p-2'>
                             {options.map((item, key) => {
-                                return item?.group === 'misc' ?
-                                    (
-                                        <div key={key} className='flex flex-row gap-2'>
-                                            <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
-                                            <label htmlFor={item.id}> {item.name} </label>
-                                            <div className='flex-grow'> </div>
-                                            <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
-                                        </div>
-                                    )
-                                    :
-                                    <> </>
+                                return (
+                                    <div key={key} className='flex flex-row gap-2'>
+                                        {item?.group === 'misc' ?
+                                            <>
+                                                <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
+                                                <label htmlFor={item.id}> {item.name} </label>
+                                                <div className='flex-grow'> </div>
+                                                <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
+                                            </>
+                                            :
+                                            <> </>
+                                        }
+                                    </div>
+                                )
                             })}
                         </div>
                     </div>
@@ -259,17 +268,20 @@ export default function EntBuff() {
                         <h3 className='bg-base-200 text-center font-bold'> Resistances </h3>
                         <div className='p-2'>
                             {options.map((item, key) => {
-                                return item?.group === 'resistances' ?
-                                    (
-                                        <div key={key} className='flex flex-row gap-2'>
-                                            <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
-                                            <label htmlFor={item.id}> {item.name} </label>
-                                            <div className='flex-grow'> </div>
-                                            <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
-                                        </div>
-                                    )
-                                    :
-                                    <> </>
+                                return (
+                                    <div key={key} className='flex flex-row gap-2'>
+                                        {item?.group === 'resistances' ?
+                                            <>
+                                                <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
+                                                <label htmlFor={item.id}> {item.name} </label>
+                                                <div className='flex-grow'> </div>
+                                                <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
+                                            </>
+                                            :
+                                            <> </>
+                                        }
+                                    </div>
+                                )
                             })}
                         </div>
                     </div>
@@ -278,26 +290,24 @@ export default function EntBuff() {
                         <h3 className='bg-base-200 text-center font-bold'> Trade </h3>
                         <div className='p-2'>
                             {options.map((item, key) => {
-                                return item?.group === 'trade' ?
-                                    (
-                                        <div key={key} className='flex flex-row gap-2'>
-                                            <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
-                                            <label htmlFor={item.id}> {item.name} </label>
-                                            <div className='flex-grow'> </div>
-                                            <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
-                                        </div>
-                                    )
-                                    :
-                                    <> </>
+                                return (
+                                    <div key={key} className='flex flex-row gap-2'>
+                                        {item?.group === 'trade' ?
+                                            <>
+                                                <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
+                                                <label htmlFor={item.id}> {item.name} </label>
+                                                <div className='flex-grow'> </div>
+                                                <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
+                                            </>
+                                            :
+                                            <> </>
+                                        }
+                                    </div>
+                                )
                             })}
                         </div>
                     </div>
                 </div>
-                {/* 
-                <div className="flex flex-col w-full gap-1">
-                    <div className="border-2 rounded">
-                        <h3 className='bg-base-200 text-center font-bold'> Attributes </h3> */}
-
 
                 <div className="flex flex-col w-full gap-1">
                     <div className="border-base-200 border-2 rounded">
@@ -325,12 +335,22 @@ export default function EntBuff() {
                                         <span className={`${item.points > 0 ? '' : 'opacity-50'} w-6`}> <b> {item.points} </b></span>
                                         <span className={`${item.points > 0 ? '' : 'opacity-50'}`}> {item.name} </span>
                                         <div className='flex-grow'> </div>
-                                        <button name={item.id} className={`btn min-h-0 w-8 h-8 ${item.points > 0 ? '' : 'opacity-20'} `} onClick={handleDecrement}> - </button>
+                                        {/* <button name={item.id} className={`btn min-h-0 w-8 h-8 ${item.points > 0 ? '' : 'opacity-20'} `} onClick={handleDecrement}> - </button> */}
 
-                                        <button name={item.id} className={`btn min-h-0 w-8 h-8 ${item.points < item.max ? '' : 'opacity-20'}`} onClick={handleIncrement}> + </button>
+                                        {/* <button name={item.id} className={`border min-h-0 w-8 h-8 ${item.points < item.max ? '' : 'opacity-20'}`} onClick={handleIncrement}> + </button> */}
+
+                                        <button name={item.id} type="button"
+                                            className={`w-8 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ${item.points > 0 ? '' : 'opacity-20'} `}
+                                            onClick={handleDecrement}>
+                                            - </button>
+
+                                        <button name={item.id} type="button"
+                                            className={`w-8 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ${item.points < item.max ? '' : 'opacity-20'}`}
+                                            onClick={handleIncrement}>
+                                            + </button>
                                     </div>
                                 </div>
-                            ) : <> </>
+                            ) : <div key={key}> </div>
                         })}
                         {points <= 0 ?
                             <div className='flex-grow text-center'>
@@ -355,7 +375,7 @@ export default function EntBuff() {
                                         <span> {item.stats > 0 ? item.stats * item.points : ''}{item.statsText} </span>
                                     </div>
                                 </div>
-                            ) : <> </>
+                            ) : <div key={key}> </div>
                         })}
                         {points <= 0 ?
                             <div className='flex-grow text-center'>

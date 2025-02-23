@@ -8,6 +8,7 @@ import ThemeButtons from '../components/themebuttons/themebuttons';
 import Header from '../components/header/header';
 import { Toaster } from 'react-hot-toast';
 
+import Providers from "@/components/Providers";
 
 // type Themes = "rebel" | "light" | "imperial" | "dark";
 
@@ -23,11 +24,13 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider>
-          <Header />
-          <div className={"container"}>
-            <Toaster/>
-            {children}
-          </div>
+          <Providers>
+            <Header />
+            <div className="flex flex-1 w-full h-screen">
+              <Toaster />
+              {children}
+            </div>
+          </Providers>
         </ThemeProvider>
       </body>
     </html>
