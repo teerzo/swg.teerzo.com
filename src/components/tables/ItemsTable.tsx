@@ -155,11 +155,11 @@ function Table({ items, search, onSearchChange, reset }: { items: [], search: st
                             {items && items.length > 0 ?
                                 items.map((item, key) => {
                                     return (
-                                        <tr>
+                                        <tr key={key}>
                                             <td className="w-16 p-2"> <Image width={50} height={50} src="/images/helmet.png" alt={'A pretty helmet'} /> </td>
-                                            <td> {item.name} </td>
-                                            <td> {item.type} </td>
-                                            <td> {item.slot} </td>
+                                            <td> {item?.name} </td>
+                                            <td> {item?.type} </td>
+                                            <td> {item?.slot} </td>
                                         </tr>
                                     )
                                 })
@@ -172,7 +172,7 @@ function Table({ items, search, onSearchChange, reset }: { items: [], search: st
                         {items && items.length > 0 ?
                             items.map((item, key) => {
                                 return (
-                                    <Link href={`/items/${item.id}`}>
+                                    <Link key={key} href={`/items/${item.id}`}>
                                         <div className="border p-5">
                                             <div className="flex flex-col">
 
