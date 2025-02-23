@@ -32,9 +32,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
     const decodeJWT = async (session: Session | null) => {
         if (session) {
-            const jwt = jwtDecode<JWTRole>(session.access_token)
+            const jwt = jwtDecode<JwtPayload>(session.access_token)
             // console.log('jwt', jwt);
-            let decoded: JWTRole = {};
+            let decoded: JwtPayload = {};
             // let decoded: JWTRole = {
             //     user_role: null,
             //     clinic_id: null,
