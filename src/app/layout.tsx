@@ -1,8 +1,6 @@
-// 'use client';
 
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { useEffect } from "react";
 import { useTheme, ThemeProvider, Themes } from '../theme-provider';
 import ThemeButtons from '../components/themebuttons/themebuttons';
 import Header from '../components/header/header';
@@ -23,15 +21,15 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider>
-          <Providers>
+        {/* <ThemeProvider> */}
+          {/* <Providers> */}
             <Header />
             <div className="flex flex-1 w-full h-screen">
               <Toaster />
               {children}
             </div>
-          </Providers>
-        </ThemeProvider>
+          {/* </Providers> */}
+        {/* </ThemeProvider> */}
       </body>
     </html>
   )
