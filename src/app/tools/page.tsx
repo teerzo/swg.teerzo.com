@@ -9,7 +9,8 @@ export default function Page() {
 
 
     return (
-        <div className="p-5">
+
+        <div className="w-full mx-auto max-w-7xl p-5">
             {/* <h1>Tools</h1> */}
 
             <div className="flex flex-row flex-wrap justify-center gap-1">
@@ -17,7 +18,6 @@ export default function Page() {
                 <Card link={'tools/expertise'} title="Expertise Calculator" description={'Expertise Calculator'} image={imgGCW} />
                 <Card link={'tools/gcw'} title="GCW Calculator" description={'GCW Point Calculator'} image={imgGCW} />
                 <Card link={'tools/timers'} title="Invasion timers" description={'Invasion and Flashpoint timers'} image={imgGCW} />
-
             </div>
         </div>
     )
@@ -26,32 +26,31 @@ export default function Page() {
 function Card({ link, title, description, image }: { link: string, title: string, description: string, image: StaticImageData | null }) {
 
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl border-2 border-base-200">
-            <figure>
-                {image !== null ?
-                    <Image
-                        src={image}
-                        alt="Picture of the author"
-                        // width={40}
-                        // height={40}
-                        placeholder="blur"
-                        className="m-0"
-                    />
+        <Link href={link}>
+            <div className="flex flex-col justify-between h-full bg-gray-100 shadow-xl border border-base-200 hover:bg-gray-200">
+                <figure>
+                    {image !== null ?
+                        <Image
+                            src={image}
+                            alt="Picture of the author"
+                            width={300}
+                            height={200}
+                            placeholder="blur"
+                            className="m-0"
+                        />
+                        :
+                        <> </>
+                    }
+                </figure>
 
-                    :
-                    <> </>
-                }
-            </figure>
-
-            <div className="card-body">
-                <h2 className="card-title">{title}</h2>
-                <p>{description}</p>
-                <div className="card-actions justify-end">
-                    <Link href={link}>
-                        <button className="btn btn-primary">Go</button>
-                    </Link>
+                <div className="p-5">
+                    <h2 className="text-lg">{title}</h2>
+                    {/* <p>{description}</p> */}
+                    <div className="card-actions justify-end">
+                        {/* <button className="btn btn-primary">Go</button> */}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Link >
     )
 }
