@@ -1,6 +1,5 @@
 'use server'
 import 'server-only'
-import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 // import { Database } from '@/lib/db_types'
 import { revalidatePath } from 'next/cache'

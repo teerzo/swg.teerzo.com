@@ -40,10 +40,10 @@ import rankRebPrivate from '../../../../public/images/gcw/rank-reb-private.png';
 export default function Page() {
 
     const [remaining, setRemaining] = useState({
-        days: 40,
-        hours: 12,
-        minutes: 10,
-        seconds: 30,
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
     })
     const [time, setTime] = useState(new Date().getTime());
     const factions = [
@@ -145,10 +145,10 @@ export default function Page() {
         const now = new Date().getTime();
         const distance = time - now;
 
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
         // console.log('set remaining', days, hours, minutes, seconds);
@@ -201,17 +201,15 @@ export default function Page() {
             const percentage = Number(selected.percentage);
             const points = selected.points !== '' ? Number(selected.points) : 0;
 
-
-
             let numerator = (points * rank.earnCap);
-            //console.log("numerator " + numerator);
+            console.log("numerator " + numerator);
             let denominator = (points + rank.earnCap);
-            //console.log("denominator " + denominator);
-            let totalEarnedRating = numerator / denominator;
+            console.log("denominator " + denominator);
+            let totalEarnedRating = Number(numerator / denominator);
             if (numerator % denominator) {
                 ++totalEarnedRating;
             }
-            //console.log("pre-secondary total earned: " + totalEarnedRating);
+            console.log("pre-secondary total earned: " + totalEarnedRating);
 
             let pointToOffsetDecay = 0;
             if (rank.decayBal > 0) {
@@ -226,7 +224,7 @@ export default function Page() {
                 //console.log("numerator " + numerator);
                 denominator = (points - pointToOffsetDecay) + (rank.earnCap - rank.decayBal + 1000);
                 //console.log("denominator " + denominator);
-                totalEarnedRating = numerator / denominator;
+                totalEarnedRating = Math.floor(numerator / denominator);
                 //console.log("totalEarned pre-decay: " + totalEarnedRating);
                 if (numerator % denominator)
                     ++totalEarnedRating;
@@ -237,46 +235,51 @@ export default function Page() {
 
             console.log('totalEarnedRating', totalEarnedRating);
 
-            //console.log("total earned: " + totalEarnedRating);
+            // console.log("total earned: " + totalEarnedRating);
             totalEarnedRating = totalEarnedRating - rank.decayBal;
-            //console.log("total earned after decay: " + totalEarnedRating);
+            console.log("total earned after decay: " + totalEarnedRating);
 
-            var cappedAdjustment = (rank.maxDecay * -1 < totalEarnedRating) ? totalEarnedRating : rank.maxDecay * -1;
-            //console.log("capped adjustment " + cappedAdjustment);
+            let cappedAdjustment = (rank.maxDecay * -1 < totalEarnedRating) ? totalEarnedRating : rank.maxDecay * -1;
+            console.log("capped adjustment " + cappedAdjustment);
 
-            var selectedRating = rank.minRating + ((percentage / 100) * 5000);
-            //console.log("selected rating " + selectedRating);
+            let selectedRating = rank.minRating + ((percentage / 100) * 5000);
+            console.log("selected rating " + selectedRating);
 
-            var finalRatingAdjustment = cappedAdjustment;
+            let finalRatingAdjustment = cappedAdjustment;
             if ((rank.decayFloor > 0) && (finalRatingAdjustment < 0) && ((selectedRating + finalRatingAdjustment) < rank.decayFloor)) {
                 finalRatingAdjustment = rank.decayFloor - selectedRating;
-                //console.log("final rating adjustment " + finalRatingAdjustment);
+                console.log("final rating adjustment " + finalRatingAdjustment);
             }
 
-            var newRating = selectedRating + finalRatingAdjustment;
+            let newRating = selectedRating + finalRatingAdjustment;
             console.log("new rating " + newRating);
 
-            var newRatingTitle = Math.round(newRating / 5000);
+            // let newRatingTitle = Math.round(newRating / 5000) + 1;
+            let newRatingTitle = Math.floor(newRating/5000);
+            console.log('new rank', newRatingTitle);
             console.log("new r title " + ranks[newRatingTitle].nameImp);
 
-            var newselectedRatingPercent = 0;
-            //console.log("change amount " + newRatingTitle + ", " + inTitleValue);
-            var changeAmount = (newRatingTitle - selected.rank);
+            let newselectedRatingPercent = 0;
+            // console.log("change amount " + newRatingTitle + ", " + inTitleValue);
+            let changeAmount = (newRatingTitle - selected.rank);
             // if(changeAmount > 0) {
             // 	changeAmount = "+" + changeAmount;
             // }
-            var upOrDown = " (" + changeAmount + ")";
+            let upOrDown = " (" + changeAmount + ")";
             newselectedRatingPercent = ((5000 - (ranks[newRatingTitle].maxRating - newRating)) / 5000 * 100);
             if (selected.rank == newRatingTitle) {
                 upOrDown = " (same)"
             }
             // newselectedRatingPercent = Math.round(newselectedRatingPercent, 2);
-            newselectedRatingPercent = Math.round(newselectedRatingPercent);
+            console.log('newselectedRatingPercent pre', newselectedRatingPercent);
+            // newselectedRatingPercent = Math.round(newselectedRatingPercent);
+            newselectedRatingPercent = newselectedRatingPercent;
+            console.log('newselectedRatingPercent pre', newselectedRatingPercent);
 
             let _future = { ...future };
 
             _future.rank = newRatingTitle; // ranks[newRatingTitle].combinedTitle + upOrDown;
-            _future.percentage = newselectedRatingPercent.toString();
+            _future.percentage = newselectedRatingPercent.toFixed(1);
 
 
             console.log('setFuture', _future);
@@ -297,7 +300,7 @@ export default function Page() {
             let _future = { ...future };
 
             _future.rank = selected.rank; // ranks[newRatingTitle].combinedTitle + upOrDown;
-            _future.percentage = selected.percentage ? selected.percentage.toString() : '';
+            _future.percentage = selected.percentage ? selected.percentage : '0';
 
 
             console.log('setFuture', _future);
@@ -347,10 +350,14 @@ export default function Page() {
             </div>
             <div className="flex flex-row justify-center">
                 <div className="flex flex-col prose w-full">
-                    <h3 className=""> Current: </h3>
+
+
+                    <h3 className="mt-1 mb-0"> GCW Calculator </h3>
+                    <a className="mb-1 text-sm" target="_blank" href="https://swg.elour.io/gcw/"> Calculations by Elour </a>
+
+                    {/* <h3 className="m-0"> Curren t: </h3> */}
 
                     <div className="flex flex-row">
-
                         <div className="form-control max-w-xs w-full mr-2">
                             <label className="label">
                                 <span className="label-text"> Faction </span>
@@ -405,7 +412,7 @@ export default function Page() {
 
                     {/* </div>
                     <div className="flex flex-col w-96 prose"> */}
-                    <h3> Ranks </h3>
+                    <h3 className="mt-2 mb-2"> Ranks </h3>
 
                     {ranks.map((item, key) => {
 
@@ -516,9 +523,9 @@ export default function Page() {
                                     }
 
                                 </div>
-                                <div className="collapse-content">
+                                {/* <div className="collapse-content">
                                     <p>hello there</p>
-                                </div>
+                                </div> */}
                             </div>
 
                         )
