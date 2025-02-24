@@ -3,7 +3,7 @@
 
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation'
 
 type Option = { id: string, name: string, group: string, description: string, points: number, max: number, per: number, stats: number, statsText: string, checked: boolean }
@@ -187,210 +187,216 @@ export default function EntBuff() {
         setOptions(defaultOptions);
     }
 
+    function SuspenseFallback() {
+        return <>placeholder</>
+      }
+
     return (
-        <div className="flex flex-col w-full items-center">
-            <div className="flex flex-row flex-grow w-full md:max-w-2xl justify-center gap-1 md:gap-5 mb-2">
-                <div className="flex flex-row alert alert-info white p-1  md:p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span className='text-xs md:text-sm'> Assuming the entertainer&apos;s expertise is fully specced for buffing at level 90</span>
-                </div>
-            </div>
+        <Suspense fallback={<SuspenseFallback />}>
 
-            <div className="flex flex-col md:flex-row flex-grow w-full md:max-w-2xl justify-center gap-5 mb-2">
-
-                <div className="flex flex-col w-full gap-1">
-                    <div className="border-base-200 border-2 rounded">
-                        <h3 className='bg-base-200 text-center font-bold'> Attributes </h3>
-                        <div className='p-2'>
-                            {options.map((item, key) => {
-                                return (
-                                    <div key={key} className='flex flex-row gap-2'>
-                                        {item?.group === 'attributes' ?
-                                            <>
-                                                <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
-                                                <label htmlFor={item.id}> {item.name} </label>
-                                                <div className='flex-grow'> </div>
-                                                <span className='whitespace-nowrap'> {item.per} - {item.max} </span>
-                                            </>
-                                            :
-                                            <> </>
-                                        }
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
-
-                    <div className="border-base-200 border-2 rounded">
-                        <h3 className='bg-base-200 text-center font-bold'> Combat </h3>
-                        <div className='p-2'>
-                            {options.map((item, key) => {
-                                return (
-                                    <div key={key} className='flex flex-row gap-2'>
-                                        {item?.group === 'combat' ?
-                                            <>
-                                                <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
-                                                <label htmlFor={item.id}> {item.name} </label>
-                                                <div className='flex-grow'> </div>
-                                                <span className='whitespace-nowrap'>{item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
-                                            </>
-                                            :
-                                            <> </>
-                                        }
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
-                    <div className="border-base-200 border-2 rounded">
-                        <h3 className='bg-base-200 text-center font-bold'> Misc </h3>
-                        <div className='p-2'>
-                            {options.map((item, key) => {
-                                return (
-                                    <div key={key} className='flex flex-row gap-2'>
-                                        {item?.group === 'misc' ?
-                                            <>
-                                                <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
-                                                <label htmlFor={item.id}> {item.name} </label>
-                                                <div className='flex-grow'> </div>
-                                                <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
-                                            </>
-                                            :
-                                            <> </>
-                                        }
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
-
-                    <div className="border-base-200 border-2 rounded">
-                        <h3 className='bg-base-200 text-center font-bold'> Resistances </h3>
-                        <div className='p-2'>
-                            {options.map((item, key) => {
-                                return (
-                                    <div key={key} className='flex flex-row gap-2'>
-                                        {item?.group === 'resistances' ?
-                                            <>
-                                                <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
-                                                <label htmlFor={item.id}> {item.name} </label>
-                                                <div className='flex-grow'> </div>
-                                                <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
-                                            </>
-                                            :
-                                            <> </>
-                                        }
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
-
-                    <div className="border-base-200 border-2 rounded">
-                        <h3 className='bg-base-200 text-center font-bold'> Trade </h3>
-                        <div className='p-2'>
-                            {options.map((item, key) => {
-                                return (
-                                    <div key={key} className='flex flex-row gap-2'>
-                                        {item?.group === 'trade' ?
-                                            <>
-                                                <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
-                                                <label htmlFor={item.id}> {item.name} </label>
-                                                <div className='flex-grow'> </div>
-                                                <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
-                                            </>
-                                            :
-                                            <> </>
-                                        }
-                                    </div>
-                                )
-                            })}
-                        </div>
+            <div className="flex flex-col w-full items-center">
+                <div className="flex flex-row flex-grow w-full md:max-w-2xl justify-center gap-1 md:gap-5 mb-2">
+                    <div className="flex flex-row alert alert-info white p-1  md:p-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span className='text-xs md:text-sm'> Assuming the entertainer&apos;s expertise is fully specced for buffing at level 90</span>
                     </div>
                 </div>
 
-                <div className="flex flex-col w-full gap-1">
-                    <div className="border-base-200 border-2 rounded">
-                        <h3 className='bg-base-200 text-center font-bold'> Available Points </h3>
-                        <div className={`flex flex-row p-2 `}>
-                            <div className={`flex flex-col`}>
-                                {/* <span> <b> Available Points:</b></span> */}
-                                <span className={`${points > 20 ? 'text-error' : 'text-success'}`}> <b> {points} / {maxPoints} </b></span>
-                                <span className={`${points > 20 ? '' : 'hidden'} text-error`}> Too many points </span>
+                <div className="flex flex-col md:flex-row flex-grow w-full md:max-w-2xl justify-center gap-5 mb-2">
 
-
+                    <div className="flex flex-col w-full gap-1">
+                        <div className="border-base-200 border-2 rounded">
+                            <h3 className='bg-base-200 text-center font-bold'> Attributes </h3>
+                            <div className='p-2'>
+                                {options.map((item, key) => {
+                                    return (
+                                        <div key={key} className='flex flex-row gap-2'>
+                                            {item?.group === 'attributes' ?
+                                                <>
+                                                    <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
+                                                    <label htmlFor={item.id}> {item.name} </label>
+                                                    <div className='flex-grow'> </div>
+                                                    <span className='whitespace-nowrap'> {item.per} - {item.max} </span>
+                                                </>
+                                                :
+                                                <> </>
+                                            }
+                                        </div>
+                                    )
+                                })}
                             </div>
-                            <div className='flex-grow'> </div>
-                            <button className='btn' onClick={handleReset}> Reset </button>
+                        </div>
+
+                        <div className="border-base-200 border-2 rounded">
+                            <h3 className='bg-base-200 text-center font-bold'> Combat </h3>
+                            <div className='p-2'>
+                                {options.map((item, key) => {
+                                    return (
+                                        <div key={key} className='flex flex-row gap-2'>
+                                            {item?.group === 'combat' ?
+                                                <>
+                                                    <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
+                                                    <label htmlFor={item.id}> {item.name} </label>
+                                                    <div className='flex-grow'> </div>
+                                                    <span className='whitespace-nowrap'>{item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
+                                                </>
+                                                :
+                                                <> </>
+                                            }
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                        <div className="border-base-200 border-2 rounded">
+                            <h3 className='bg-base-200 text-center font-bold'> Misc </h3>
+                            <div className='p-2'>
+                                {options.map((item, key) => {
+                                    return (
+                                        <div key={key} className='flex flex-row gap-2'>
+                                            {item?.group === 'misc' ?
+                                                <>
+                                                    <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
+                                                    <label htmlFor={item.id}> {item.name} </label>
+                                                    <div className='flex-grow'> </div>
+                                                    <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
+                                                </>
+                                                :
+                                                <> </>
+                                            }
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+
+                        <div className="border-base-200 border-2 rounded">
+                            <h3 className='bg-base-200 text-center font-bold'> Resistances </h3>
+                            <div className='p-2'>
+                                {options.map((item, key) => {
+                                    return (
+                                        <div key={key} className='flex flex-row gap-2'>
+                                            {item?.group === 'resistances' ?
+                                                <>
+                                                    <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
+                                                    <label htmlFor={item.id}> {item.name} </label>
+                                                    <div className='flex-grow'> </div>
+                                                    <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
+                                                </>
+                                                :
+                                                <> </>
+                                            }
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+
+                        <div className="border-base-200 border-2 rounded">
+                            <h3 className='bg-base-200 text-center font-bold'> Trade </h3>
+                            <div className='p-2'>
+                                {options.map((item, key) => {
+                                    return (
+                                        <div key={key} className='flex flex-row gap-2'>
+                                            {item?.group === 'trade' ?
+                                                <>
+                                                    <input id={item.id} type="checkbox" onChange={handleChange} checked={item.checked} />
+                                                    <label htmlFor={item.id}> {item.name} </label>
+                                                    <div className='flex-grow'> </div>
+                                                    <span className='whitespace-nowrap'> {item.per} {`${item.max > 1 ? '- ' + item.max : ''}`} </span>
+                                                </>
+                                                :
+                                                <> </>
+                                            }
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         </div>
                     </div>
 
-                    <div className='flex-grow border-base-200 border-2 p-2'>
+                    <div className="flex flex-col w-full gap-1">
+                        <div className="border-base-200 border-2 rounded">
+                            <h3 className='bg-base-200 text-center font-bold'> Available Points </h3>
+                            <div className={`flex flex-row p-2 `}>
+                                <div className={`flex flex-col`}>
+                                    {/* <span> <b> Available Points:</b></span> */}
+                                    <span className={`${points > 20 ? 'text-error' : 'text-success'}`}> <b> {points} / {maxPoints} </b></span>
+                                    <span className={`${points > 20 ? '' : 'hidden'} text-error`}> Too many points </span>
 
 
-                        {options.map((item, key) => {
-                            return item.checked ? (
-                                <div key={key} className="flex flex-col mb-2">
-                                    <div className={`flex flex-row items-center gap-1`}>
-                                        <span className={`${item.points > 0 ? '' : 'opacity-50'} w-6`}> <b> {item.points} </b></span>
-                                        <span className={`${item.points > 0 ? '' : 'opacity-50'}`}> {item.name} </span>
-                                        <div className='flex-grow'> </div>
-                                        {/* <button name={item.id} className={`btn min-h-0 w-8 h-8 ${item.points > 0 ? '' : 'opacity-20'} `} onClick={handleDecrement}> - </button> */}
-
-                                        {/* <button name={item.id} className={`border min-h-0 w-8 h-8 ${item.points < item.max ? '' : 'opacity-20'}`} onClick={handleIncrement}> + </button> */}
-
-                                        <button name={item.id} type="button"
-                                            className={`w-8 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ${item.points > 0 ? '' : 'opacity-20'} `}
-                                            onClick={handleDecrement}>
-                                            - </button>
-
-                                        <button name={item.id} type="button"
-                                            className={`w-8 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ${item.points < item.max ? '' : 'opacity-20'}`}
-                                            onClick={handleIncrement}>
-                                            + </button>
-                                    </div>
                                 </div>
-                            ) : <div key={key}> </div>
-                        })}
-                        {points <= 0 ?
-                            <div className='flex-grow text-center'>
-                                <span className=''> Nothing selected </span>
+                                <div className='flex-grow'> </div>
+                                <button className='btn' onClick={handleReset}> Reset </button>
                             </div>
-                            :
-                            <> </>
-                        }
-                    </div>
-                </div>
-            </div>
-            <div className="flex flex-col w-full md:max-w-2xl gap-1">
-                <div className={` border-2 rounded ${points > maxPoints ? 'border-error' : 'border-base-200'}`}>
-                    <h3 className={` text-center font-bold ${points > maxPoints ? 'text-error' : 'bg-base-200'}`}> Summary </h3>
-                    <div className={`flex flex-col p-2`}>
-                        {options.map((item, key) => {
-                            return item.checked && item.points > 0 ? (
-                                <div key={key} className="flex flex-col mb-2">
-                                    <div className={`flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1`}>
-                                        {/* <span> <b> {item.points} </b></span> */}
-                                        <span>  <b> {item.name} </b></span>
-                                        <span> {item.stats > 0 ? item.stats * item.points : ''}{item.statsText} </span>
+                        </div>
+
+                        <div className='flex-grow border-base-200 border-2 p-2'>
+
+
+                            {options.map((item, key) => {
+                                return item.checked ? (
+                                    <div key={key} className="flex flex-col mb-2">
+                                        <div className={`flex flex-row items-center gap-1`}>
+                                            <span className={`${item.points > 0 ? '' : 'opacity-50'} w-6`}> <b> {item.points} </b></span>
+                                            <span className={`${item.points > 0 ? '' : 'opacity-50'}`}> {item.name} </span>
+                                            <div className='flex-grow'> </div>
+                                            {/* <button name={item.id} className={`btn min-h-0 w-8 h-8 ${item.points > 0 ? '' : 'opacity-20'} `} onClick={handleDecrement}> - </button> */}
+
+                                            {/* <button name={item.id} className={`border min-h-0 w-8 h-8 ${item.points < item.max ? '' : 'opacity-20'}`} onClick={handleIncrement}> + </button> */}
+
+                                            <button name={item.id} type="button"
+                                                className={`w-8 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ${item.points > 0 ? '' : 'opacity-20'} `}
+                                                onClick={handleDecrement}>
+                                                - </button>
+
+                                            <button name={item.id} type="button"
+                                                className={`w-8 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ${item.points < item.max ? '' : 'opacity-20'}`}
+                                                onClick={handleIncrement}>
+                                                + </button>
+                                        </div>
                                     </div>
+                                ) : <div key={key}> </div>
+                            })}
+                            {points <= 0 ?
+                                <div className='flex-grow text-center'>
+                                    <span className=''> Nothing selected </span>
                                 </div>
-                            ) : <div key={key}> </div>
-                        })}
-                        {points <= 0 ?
-                            <div className='flex-grow text-center'>
-                                <span className=''> Nothing selected </span>
-                            </div>
-                            :
-                            <> </>
-                        }
+                                :
+                                <> </>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div className="flex flex-col w-full md:max-w-2xl gap-1">
+                    <div className={` border-2 rounded ${points > maxPoints ? 'border-error' : 'border-base-200'}`}>
+                        <h3 className={` text-center font-bold ${points > maxPoints ? 'text-error' : 'bg-base-200'}`}> Summary </h3>
+                        <div className={`flex flex-col p-2`}>
+                            {options.map((item, key) => {
+                                return item.checked && item.points > 0 ? (
+                                    <div key={key} className="flex flex-col mb-2">
+                                        <div className={`flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1`}>
+                                            {/* <span> <b> {item.points} </b></span> */}
+                                            <span>  <b> {item.name} </b></span>
+                                            <span> {item.stats > 0 ? item.stats * item.points : ''}{item.statsText} </span>
+                                        </div>
+                                    </div>
+                                ) : <div key={key}> </div>
+                            })}
+                            {points <= 0 ?
+                                <div className='flex-grow text-center'>
+                                    <span className=''> Nothing selected </span>
+                                </div>
+                                :
+                                <> </>
+                            }
+                        </div>
+                    </div>
+                </div>
 
 
 
-            {/* <div className="flex flex-col w-full md:max-w-2xl gap-1">
+                {/* <div className="flex flex-col w-full md:max-w-2xl gap-1">
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text"> <h3> Message for ent </h3></span>
@@ -402,23 +408,23 @@ export default function EntBuff() {
                 </div>
             </div> */}
 
-            <div className="flex flex-col w-full md:max-w-2xl items-center p-10">
-                <span className='font-bold'> Message for Entertainer: </span>
-                <span className={`${points > 20 ? '' : 'hidden'} text-error`}> Too many points </span>
+                <div className="flex flex-col w-full md:max-w-2xl items-center p-10">
+                    <span className='font-bold'> Message for Entertainer: </span>
+                    <span className={`${points > 20 ? '' : 'hidden'} text-error`}> Too many points </span>
 
-                <div className="join mt-5">
-                    <div>
+                    <div className="join mt-5">
                         <div>
-                            <input className="input input-bordered join-item" placeholder="Search" value={message} onChange={() => { }} />
+                            <div>
+                                <input className="input input-bordered join-item" placeholder="Search" value={message} onChange={() => { }} />
+                            </div>
                         </div>
-                    </div>
-                    <div className="indicator">
-                        {/* <span className="indicator-item badge badge-secondary">new</span> */}
-                        <button className="btn btn-outline border-base-300 join-item" onClick={() => { navigator.clipboard.writeText(message) }}> Copy </button>
+                        <div className="indicator">
+                            {/* <span className="indicator-item badge badge-secondary">new</span> */}
+                            <button className="btn btn-outline border-base-300 join-item" onClick={() => { navigator.clipboard.writeText(message) }}> Copy </button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-        </div >
+        </Suspense>
     )
 }
