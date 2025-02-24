@@ -14,11 +14,13 @@ export default function Page() {
 
     function SuspenseFallback() {
         return <>placeholder</>
-      }
+    }
 
     return (
         <Suspense fallback={<SuspenseFallback />}>
-            <EntBuff />
+            <div className="w-full mx-auto max-w-7xl p-5">
+                <EntBuff />
+            </div>
         </Suspense>
     )
 }
