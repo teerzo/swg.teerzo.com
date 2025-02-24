@@ -145,10 +145,10 @@ export default function Page() {
         const now = new Date().getTime();
         const distance = time - now;
 
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
         // console.log('set remaining', days, hours, minutes, seconds);
@@ -239,33 +239,33 @@ export default function Page() {
             totalEarnedRating = totalEarnedRating - rank.decayBal;
             console.log("total earned after decay: " + totalEarnedRating);
 
-            var cappedAdjustment = (rank.maxDecay * -1 < totalEarnedRating) ? totalEarnedRating : rank.maxDecay * -1;
+            let cappedAdjustment = (rank.maxDecay * -1 < totalEarnedRating) ? totalEarnedRating : rank.maxDecay * -1;
             console.log("capped adjustment " + cappedAdjustment);
 
-            var selectedRating = rank.minRating + ((percentage / 100) * 5000);
+            let selectedRating = rank.minRating + ((percentage / 100) * 5000);
             console.log("selected rating " + selectedRating);
 
-            var finalRatingAdjustment = cappedAdjustment;
+            let finalRatingAdjustment = cappedAdjustment;
             if ((rank.decayFloor > 0) && (finalRatingAdjustment < 0) && ((selectedRating + finalRatingAdjustment) < rank.decayFloor)) {
                 finalRatingAdjustment = rank.decayFloor - selectedRating;
                 console.log("final rating adjustment " + finalRatingAdjustment);
             }
 
-            var newRating = selectedRating + finalRatingAdjustment;
+            let newRating = selectedRating + finalRatingAdjustment;
             console.log("new rating " + newRating);
 
-            // var newRatingTitle = Math.round(newRating / 5000) + 1;
+            // let newRatingTitle = Math.round(newRating / 5000) + 1;
             let newRatingTitle = Math.floor(newRating/5000);
             console.log('new rank', newRatingTitle);
             console.log("new r title " + ranks[newRatingTitle].nameImp);
 
-            var newselectedRatingPercent = 0;
+            let newselectedRatingPercent = 0;
             // console.log("change amount " + newRatingTitle + ", " + inTitleValue);
-            var changeAmount = (newRatingTitle - selected.rank);
+            let changeAmount = (newRatingTitle - selected.rank);
             // if(changeAmount > 0) {
             // 	changeAmount = "+" + changeAmount;
             // }
-            var upOrDown = " (" + changeAmount + ")";
+            let upOrDown = " (" + changeAmount + ")";
             newselectedRatingPercent = ((5000 - (ranks[newRatingTitle].maxRating - newRating)) / 5000 * 100);
             if (selected.rank == newRatingTitle) {
                 upOrDown = " (same)"

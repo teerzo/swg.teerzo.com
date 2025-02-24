@@ -9,7 +9,7 @@ export default function Page() {
 
 
     return (
-        <div>
+        <div className="p-5">
             {/* <h1>Tools</h1> */}
 
             <div className="flex flex-row flex-wrap justify-center gap-1">
