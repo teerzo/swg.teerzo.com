@@ -24,7 +24,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
         {/* <ThemeProvider> */}
           {/* <Providers> */}
             <Header />
-            <div className="flex flex-1 w-full h-screen">
+            <div className="flex flex-1 w-full h-screen pt-20">
               <Toaster />
               {children}
             </div>
