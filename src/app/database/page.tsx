@@ -26,6 +26,7 @@ const sortOptions = [
 const subCategories = [
     { name: 'Armor', href: '/database?armor' },
     { name: 'Buff items', href: '/database?buff-items' },
+    { name: 'Clothing', href: '/database?clothing' },
     { name: 'Junkloot', href: '/database?junkloot' },
     { name: 'Vehicles', href: '/database?vehicles' },
     { name: 'Weapons', href: '/database?weapons' },
@@ -76,7 +77,7 @@ export default function Example() {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
     return (
-        <div className="w-full bg-white">
+        <div className="w-full ">
             <div>
                 {/* Mobile filter dialog */}
                 <Dialog open={mobileFiltersOpen} onClose={setMobileFiltersOpen} className="relative z-40 lg:hidden">
@@ -332,9 +333,9 @@ function Table() {
         <div className="px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-center">
                 <div className="sm:flex-auto">
-                    <h1 className="text-base font-semibold text-gray-900">Users</h1>
+                    <h1 className="text-base font-semibold text-gray-900">Item Database</h1>
                     <p className="mt-2 text-sm text-gray-700">
-                        A list of all the users in your account including their name, title, email and role.
+                        ...
                     </p>
                 </div>
                 <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -342,7 +343,7 @@ function Table() {
                         type="button"
                         className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                        Add user
+                        Add Item
                     </button>
                 </div>
             </div>

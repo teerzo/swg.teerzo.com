@@ -18,8 +18,10 @@ export default function Page() {
 
     return (
         <Suspense fallback={<SuspenseFallback />}>
-            <div className="w-full mx-auto max-w-7xl p-5">
-                <EntBuff />
+            <div className='w-full max-h-full overflow-auto  p-5'>
+                <div className="w-full mx-auto max-w-7xl ">
+                    <EntBuff />
+                </div>
             </div>
         </Suspense>
     )

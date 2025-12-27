@@ -1,11 +1,11 @@
-
 "use client"
 
 import { useEffect, useState, useContext } from 'react';
 import ThemeButtons from '../themebuttons/themebuttons';
-import { FaRebel, FaEmpire, FaUserAlt, FaSkullCrossbones, FaSpider, FaUserAstronaut } from "react-icons/fa";
+import { FaRebel, FaEmpire, FaUserAlt, FaSkullCrossbones, FaSpider, FaUserAstronaut, FaTools, FaSun, FaMoon } from "react-icons/fa";
 import Link from "next/link";
 import { useTheme } from '../../theme-provider';
+import { usePathname } from 'next/navigation';
 
 type Themes = "rebel" | "light" | "imperial" | "dark";
 
@@ -15,12 +15,13 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-    //   { name: 'Home', href: '/', current: true },
+    //   { name: 'Home', href: '/', current: false },
     { name: 'Database', href: '/database', current: false },
     { name: 'Tools', href: '/tools', current: false },
-    { name: 'Characters', href: '/characters', current: false },
-    { name: 'Ships', href: '/ships', current: false },
-    { name: 'Collections', href: '/collections', current: false },
+    { name: 'Events', href: '/events', current: false },
+    // { name: 'Characters', href: '/characters', current: false },
+    // { name: 'Ships', href: '/ships', current: false },
+    // { name: 'Collections', href: '/collections', current: false },
 ]
 
 function classNames(...classes: any[]) {
@@ -28,6 +29,31 @@ function classNames(...classes: any[]) {
 }
 
 export default function Navbar() {
+    const { theme, setTheme } = useTheme();
+    const pathname = usePathname();
+
+    // Update navigation items based on current path
+    const navigationItems = navigation.map(item => ({
+        ...item,
+        current: pathname === item.href
+    }));
+
+    // Function to render the appropriate icon based on the current theme
+    const renderThemeIcon = () => {
+        switch (theme) {
+            case 'rebel':
+                return <FaRebel className='text-xl text-red-500' />;
+            case 'imperial':
+                return <FaEmpire className='text-xl text-blue-500' />;
+            case 'light':
+                return <FaSun className='text-xl text-yellow-500' />;
+            case 'dark':
+                return <FaMoon className='text-xl text-gray-300' />;
+            default:
+                return <FaTools className='text-xl text-blue-500' />;
+        }
+    };
+
     return (
         <div className="absolute top-0 left-0 right-0">
             <Disclosure as="nav" className="bg-gray-800">
@@ -54,7 +80,7 @@ export default function Navbar() {
                                     )}
                                 >
                                     <div className='flex flex-row'>
-                                        <FaRebel className='text-xl text-red-500' />
+                                        {renderThemeIcon()}
                                         <span className='ml-2'>
                                             SWG TOOLS
                                         </span>
@@ -63,7 +89,7 @@ export default function Navbar() {
                             </div>
                             <div className="hidden sm:ml-6 sm:block">
                                 <div className="flex space-x-4">
-                                    {navigation.map((item) => (
+                                    {navigationItems.map((item) => (
                                         <a
                                             key={item.name}
                                             href={item.href}
@@ -82,23 +108,51 @@ export default function Navbar() {
                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
                             <div className="hidden sm:ml-6 sm:flex sm:flex-row sm:items-center">
-                                <label className='text-sm text-white'> Server: </label>
-                                <select className='border text-white p-2 ml-2 mr-5'>
-                                    <option> SWG: Live </option>
-                                    <option> SWG: Legends </option>
-                                    <option> SWG: Beyond </option>
-                                    <option> SWG: Restoration </option>
+                                <label className='text-sm font-medium text-gray-300 mr-2'>Server:</label>
+                                <select className='bg-gray-700 text-white rounded-md border border-gray-600 py-1.5 pl-3 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 hover:bg-gray-600 transition-colors'>
+                                    <option>SWG: Live</option>
+                                    <option>SWG: Legends</option>
+                                    <option disabled>SWG: Beyond</option>
+                                    <option disabled>SWG: Restoration</option>
                                 </select>
                             </div>
 
-                            <button
+                            {/* Theme Switch */}
+                            <div className="hidden sm:ml-4 sm:flex sm:items-center">
+                                <div className="flex items-center space-x-2 bg-gray-700 rounded-md p-1">
+                                    <button 
+                                        onClick={() => setTheme('rebel')}
+                                        className={`p-1.5 rounded-md transition-all duration-200 ${
+                                            theme === 'rebel' 
+                                                ? 'bg-gray-800 text-red-500 shadow-md scale-105' 
+                                                : 'text-gray-400 hover:bg-gray-800 hover:text-red-400'
+                                        }`}
+                                        aria-label="Rebel theme"
+                                    >
+                                        <FaRebel className="size-4" />
+                                    </button>
+                                    <button 
+                                        onClick={() => setTheme('imperial')}
+                                        className={`p-1.5 rounded-md transition-all duration-200 ${
+                                            theme === 'imperial' 
+                                                ? 'bg-gray-800 text-blue-500 shadow-md scale-105' 
+                                                : 'text-gray-400 hover:bg-gray-800 hover:text-blue-400'
+                                        }`}
+                                        aria-label="Imperial theme"
+                                    >
+                                        <FaEmpire className="size-4" />
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* <button
                                 type="button"
                                 className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                             >
                                 <span className="absolute -inset-1.5" />
                                 <span className="sr-only">View notifications</span>
                                 <BellIcon aria-hidden="true" className="size-6" />
-                            </button>
+                            </button> */}
 
                             {/* Profile dropdown */}
                             <Menu as="div" className="relative ml-3">
@@ -106,11 +160,11 @@ export default function Navbar() {
                                     <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <img
-                                            alt=""
-                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                            className="size-8 rounded-full"
-                                        />
+                                        <div className="size-8 rounded-full bg-gray-700 flex items-center justify-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 text-gray-300">
+                                                <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clipRule="evenodd" />
+                                            </svg>
+                                        </div>
                                     </MenuButton>
                                 </div>
                                 <MenuItems
@@ -119,7 +173,7 @@ export default function Navbar() {
                                 >
                                     <MenuItem>
                                         <a
-                                            href="#"
+                                            href="/account/profile"
                                             className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                                         >
                                             Your Profile
@@ -127,7 +181,7 @@ export default function Navbar() {
                                     </MenuItem>
                                     <MenuItem>
                                         <a
-                                            href="#"
+                                            href="/account/settings"
                                             className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                                         >
                                             Settings
@@ -135,7 +189,7 @@ export default function Navbar() {
                                     </MenuItem>
                                     <MenuItem>
                                         <a
-                                            href="#"
+                                            href="/logout"
                                             className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                                         >
                                             Sign out
@@ -149,7 +203,7 @@ export default function Navbar() {
 
                 <DisclosurePanel className="sm:hidden">
                     <div className="space-y-1 px-2 pb-3 pt-2">
-                        {navigation.map((item) => (
+                        {navigationItems.map((item) => (
                             <DisclosureButton
                                 key={item.name}
                                 as="a"

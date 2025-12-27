@@ -9,7 +9,7 @@ type ThemeState = {
 }
 
 const initialState: ThemeState = {
-    theme: 'light',
+    theme: 'imperial', // Default to imperial theme
     setTheme: () => null
 }
 
@@ -40,34 +40,44 @@ export const ThemeProvider = ({ children }: Props) => {
     const key = 'swg-tools-theme';
     // const _theme = window.localStorage.getItem(key)
     // const [theme, setNewTheme] = useState<Themes>(_theme ? _theme as Themes : 'light' );
-    const [theme, setNewTheme] = useState<Themes>(null);
+    const [theme, setNewTheme] = useState<Themes>('imperial'); // Default to imperial theme
+    const [initialized, setInitialized] = useState(false);
 
+    // Initialize theme from localStorage only once
     useEffect(() => {
-        const _theme = window.localStorage.getItem(key);
-
-        // console.log('get theme', _theme);
-        if (_theme) {
-            setTheme(_theme as Themes);
+        if (initialized) return;
+        
+        try {
+            const savedTheme = localStorage.getItem(key);
+            if (savedTheme) {
+                setNewTheme(savedTheme as Themes);
+            }
+            setInitialized(true);
+        } catch (error) {
+            console.error('Error initializing theme:', error);
+            setInitialized(true);
         }
-        // const _theme = window.localStorage.getItem(key)
+    }, [initialized]);
 
-    }, [])
-
+    // Save theme to localStorage when it changes
     useEffect(() => {
-        // console.log('theme', theme);
-        if( theme ) {
-            window.localStorage.setItem(key, theme);
+        if (!initialized) return;
+        
+        try {
+            if (theme) {
+                localStorage.setItem(key, theme);
+            }
+        } catch (error) {
+            console.error('Error saving theme:', error);
         }
+    }, [theme, initialized]);
 
-
-    }, [theme])
-
-    function setTheme(theme: Themes) {
+    function setTheme(newTheme: Themes) {
         // console.log('setTheme', theme);
-        if (theme) {
-            // console.log('setting theme', theme);
+        if (newTheme) {
+            // console.log('setting theme', newTheme);
 
-            setNewTheme(theme);
+            setNewTheme(newTheme);
         }
     }
 
